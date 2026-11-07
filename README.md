@@ -117,6 +117,8 @@ Use the [AI API contract](docs/ai-api-contract.md) for current endpoints. The or
 
 ## Documentation
 
+- [Submission readiness](docs/submission-readiness.html) — required materials, verified evidence, remaining gaps and next steps.
+- [RescueRelay as a story](docs/rescuerelay-story.html) — a guided tour of users, features, the complete AI stack, examples and test coverage.
 - [Local AI configuration and validation — 7 November 2026](docs/ai-local-validation-2026-11-07.md) — current local setup, demo-account readiness, live checks and untested operations.
 - [Step-by-step HTML build guide](docs/build-guide.html) — open locally in your browser.
 - [Official project documentation](docs/RescueRelay-Project-Documentation.docx) — audience-ready Word document.

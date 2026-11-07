@@ -1,10 +1,12 @@
 # Local AI setup and bounded live validation — 7 November 2026
 
+**Subsequent public-commit CI:** commit `53a31d053c43d99e3a67ae51eb23788aa806751e` passed [GitHub Actions verification](https://github.com/krish339-ai/RescueRelay/actions/runs/42349533301). Both `verify` (including `npm run verify` and dependency audit) and `windows-launchers` completed successfully. This CI result is separate from the manually exercised live-provider coverage below and does not validate subsequent documentation changes.
+
 Nine providers were configured and enabled in the ignored local settings. After restart, authenticated demo-coordinator capability checks confirmed all nine available with no missing settings. ElevenLabs remains intentionally parked. Fireworks, Nebius and OpenAI passed direct live arithmetic requests; Tavily and Keenable passed direct public searches; Mem0 and LlamaParse passed authenticated metadata checks; LangSmith's newly created Local destination was verified but no trace was sent.
 
 Pinecone passed a real one-document upsert (HTTP 202) and first-attempt retrieval (HTTP 200), using the actual consent/operation routes in an isolated in-memory app instance with synthetic reference data. No local fallback was used, and the running demo database was unchanged. This was not a browser or demo-workspace indexing test.
 
-See [the dated validation report](ai-local-validation-2026-11-07.md) for provider-specific evidence, the retained synthetic document, configuration scope and outstanding end-to-end checks. Historical mock-only/no-live-call statements below describe their original release checkpoints, not this later local session. No new aggregate CI or full workflow pass is claimed.
+See [the dated validation report](ai-local-validation-2026-11-07.md) for provider-specific evidence, the retained synthetic document, configuration scope and outstanding end-to-end checks. Historical mock-only/no-live-call statements below describe their original release checkpoints, not this later local session. The separate CI result above does not establish a complete live-provider workflow pass.
 
 ---
 
