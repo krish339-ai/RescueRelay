@@ -1,0 +1,508 @@
+{
+  "project": "RescueRelay",
+  "author": "Krishna Kallamadi",
+  "updated": "30 October 2026 at 21:13 UTC",
+  "version": "0.1.0",
+  "status_note": "The original 17 local and mocked implementation stages remain accepted. The subsequent Rescue Pipeline + Liquid/Organic redesign passed desktop/narrow review, fresh aggregate CI and Windows pull/restart verification on implementation revision 9057ea4. Documentation closure is prepared for separate publication; attachment receipt is not claimed. Live integrations remain OFF and unverified.",
+  "stages": [
+    {
+      "number": 1,
+      "title": "Scope and architecture",
+      "status": "complete",
+      "goal": "Define a bounded recovery product and a shared web and native architecture before implementation.",
+      "deliverables": [
+        "Product boundary and phased implementation plan",
+        "TypeScript workspace and common domain contract",
+        "Human approval and synthetic-data design decisions"
+      ],
+      "checks": [
+        {
+          "text": "Architecture and platform choices documented",
+          "done": true
+        },
+        {
+          "text": "Implemented versus future capability boundary explicit",
+          "done": true
+        },
+        {
+          "text": "Existing platform capabilities acknowledged",
+          "done": true
+        }
+      ],
+      "evidence": "Implementation plan, API contract and primary-source manifest are present and reviewed.",
+      "phase": "baseline"
+    },
+    {
+      "number": 2,
+      "title": "Repository and foundation",
+      "status": "complete",
+      "goal": "Create the private version-controlled project and establish reproducible development entry points.",
+      "deliverables": [
+        "Private krish339-ai/RescueRelay repository",
+        "npm workspace manifests and shared types",
+        "Ignored secrets, runtime data and QA intermediates"
+      ],
+      "checks": [
+        {
+          "text": "Private repository created in the requested account",
+          "done": true
+        },
+        {
+          "text": "Initial foundation commit pushed and remote verified",
+          "done": true
+        },
+        {
+          "text": "Local clone URL and author attribution recorded",
+          "done": true
+        }
+      ],
+      "evidence": "Private remote confirmed at initial foundation commit 231ae385bd26d299d15aedd18d06f37762ce9e31. Later commits extend that foundation.",
+      "phase": "baseline"
+    },
+    {
+      "number": 3,
+      "title": "Accounts and persistence",
+      "status": "complete",
+      "goal": "Enforce identity, organization isolation, roles and durable state at the API boundary.",
+      "deliverables": [
+        "Scrypt password hashes and expiring opaque sessions",
+        "SQLite transactions and versioned organization state",
+        "Role-filtered snapshots and coordinator-managed accounts"
+      ],
+      "checks": [
+        {
+          "text": "Unauthorized and cross-organization requests are rejected",
+          "done": true
+        },
+        {
+          "text": "Logout and role restrictions are exercised",
+          "done": true
+        },
+        {
+          "text": "State and sessions behave correctly after database reopen",
+          "done": true
+        }
+      ],
+      "evidence": "Accepted backend milestone: API suite 20/20 and independent QA 20/20 passed, including authentication, role/organization boundaries, logout and persistent database reopen. These 40 checks are shared evidence across backend stages, not 40 separate checks per stage.",
+      "completed_at": "2026-10-30T17:07:13Z",
+      "phase": "baseline"
+    },
+    {
+      "number": 4,
+      "title": "Rescue operations",
+      "status": "complete",
+      "goal": "Support the donation-to-receipt workflow without weakening operational constraints.",
+      "deliverables": [
+        "Partner, volunteer, donation and rescue records",
+        "Acceptance, pickup, delivery and receiving acknowledgment",
+        "Cancellation, custody-aware escalation and resolution"
+      ],
+      "checks": [
+        {
+          "text": "Forward transitions and acceptance requirements tested",
+          "done": true
+        },
+        {
+          "text": "Unsupported handling and invalid windows rejected",
+          "done": true
+        },
+        {
+          "text": "Active commitments and food custody remain protected",
+          "done": true
+        }
+      ],
+      "evidence": "API-level operations accepted: acceptance and forward transitions, unsupported handling, active-commitment guards, custody-aware interruption and coordinator resolution passed the shared backend regression set. Browser and native interaction review remains in separate stages.",
+      "completed_at": "2026-10-30T17:07:13Z",
+      "phase": "baseline"
+    },
+    {
+      "number": 5,
+      "title": "Policy retrieval and recovery reasoning",
+      "status": "complete",
+      "goal": "Make recovery recommendations inspectable and keep deterministic checks authoritative.",
+      "deliverables": [
+        "Local lexical policy retrieval with source excerpts",
+        "Offline bounded planner and candidate rejection details",
+        "Optional allowlisted read-only provider investigation"
+      ],
+      "checks": [
+        {
+          "text": "Policy citations reproduce persisted evidence",
+          "done": true
+        },
+        {
+          "text": "Feasible and infeasible synthetic cases behave as expected",
+          "done": true
+        },
+        {
+          "text": "Provider scope, schemas and tool budgets are enforced",
+          "done": true
+        }
+      ],
+      "evidence": "Offline recovery evaluation passed 12/12 synthetic scenarios. Local policy evidence, maximum feasible matching and provider guardrails passed offline and mocked-provider tests. No live paid provider call was performed or validated.",
+      "completed_at": "2026-10-30T17:07:13Z",
+      "phase": "baseline"
+    },
+    {
+      "number": 6,
+      "title": "Recovery proposals and approval",
+      "status": "complete",
+      "goal": "Ensure that only a reviewed, current, feasible proposal can alter a rescue.",
+      "deliverables": [
+        "Version-bound proposals with ten-minute expiry",
+        "Transactional revalidation and idempotent approval",
+        "Audit events and in-app notification records"
+      ],
+      "checks": [
+        {
+          "text": "Stale or expired proposals cannot be applied",
+          "done": true
+        },
+        {
+          "text": "Duplicate retries cannot apply recovery twice",
+          "done": true
+        },
+        {
+          "text": "Infeasible and custody-held work cannot auto-reassign",
+          "done": true
+        }
+      ],
+      "evidence": "Accepted approval evidence: version/expiry guards, idempotent replay, deterministic revalidation, infeasibility and custody protections passed the shared backend regression checks. UI approval interaction review is still tracked separately.",
+      "completed_at": "2026-10-30T17:07:13Z",
+      "phase": "baseline"
+    },
+    {
+      "number": 7,
+      "title": "Responsive web and installable shell",
+      "status": "complete",
+      "goal": "Provide a usable coordinator workspace and role-specific browser experiences.",
+      "deliverables": [
+        "Landing page and responsive operational workspace",
+        "Partner forms, recovery evidence and approval controls",
+        "Web manifest and non-sensitive application shell cache"
+      ],
+      "checks": [
+        {
+          "text": "Desktop and narrow-layout user journeys reviewed",
+          "done": true
+        },
+        {
+          "text": "Forms, errors, empty states and role views exercised",
+          "done": true
+        },
+        {
+          "text": "Authenticated API data excluded from shell caching",
+          "done": true
+        }
+      ],
+      "evidence": "Accepted browser review at 17:30 UTC: actual delivered web server and API, desktop 1182 CSS pixels and narrow 500 pixels. Recovery review/approval, role-scoped lifecycle/receipt, CSV validation/import/export, no-capacity escalation, navigation focus repair, real API outage feedback and restart recovery passed. Exact 390-pixel application layout, physical touch, offline service-worker behavior and installation remain unverified.",
+      "phase": "baseline",
+      "completed_at": "2026-10-30T17:30:00Z"
+    },
+    {
+      "number": 8,
+      "title": "Android and iOS client source",
+      "status": "complete",
+      "goal": "Share the operational API with a purpose-built Expo native interface.",
+      "deliverables": [
+        "Role-based daily board and recovery review",
+        "Native session storage with explicit fallback",
+        "Android and iOS export paths and local-device setup"
+      ],
+      "checks": [
+        {
+          "text": "Native source typechecks and target bundles export",
+          "done": true
+        },
+        {
+          "text": "Mobile transport and domain helpers pass tests",
+          "done": true
+        },
+        {
+          "text": "Native runtime and signing limits are explicitly reported",
+          "done": true
+        },
+        {
+          "text": "React Native Web preview reviewed with the API; clearly distinguished from native execution",
+          "done": true
+        }
+      ],
+      "evidence": "Baseline mobile source checks passed: eight unit tests, strict TypeScript, real-API transport integration, Android/iOS/web exports and HTTP-policy introspection. A 430px React Native Web canvas passed sign-in, role switching, recovery evidence/approval, acceptance/cancellation and error feedback. Physical devices, native SecureStore runtime, compilation and signing remain unverified.",
+      "completed_at": "2026-10-30T17:27:08Z",
+      "phase": "baseline"
+    },
+    {
+      "number": 9,
+      "title": "Data utilities and local operations",
+      "status": "complete",
+      "goal": "Support reproducible input, inspection and local operation without external side effects.",
+      "deliverables": [
+        "Bounded CSV validation and atomic import",
+        "Formula-safe CSV exports and audit history",
+        "Synthetic resets, configuration and security guidance"
+      ],
+      "checks": [
+        {
+          "text": "Malformed or unsupported imports fail without partial writes",
+          "done": true
+        },
+        {
+          "text": "Exports and scope protections are verified",
+          "done": true
+        },
+        {
+          "text": "Local setup, configuration and backup limits documented",
+          "done": true
+        }
+      ],
+      "evidence": "CSV validation/import/export checks passed. Local database integrity, consistent backup, new-file restore with session invalidation, restart persistence and built-web static-server checks were exercised. Managed deployment and enterprise operations remain out of scope. Final browser review also passed valid and invalid CSV import paths and export download against the actual API.",
+      "completed_at": "2026-10-30T17:07:13Z",
+      "phase": "baseline"
+    },
+    {
+      "number": 10,
+      "title": "Quality assurance and evaluations",
+      "status": "complete",
+      "goal": "Establish what has actually been tested and keep evidence separate from aspirations.",
+      "deliverables": [
+        "API and independent adversarial regression tests",
+        "Synthetic recovery evaluation scenarios",
+        "Browser review, bundle checks and dependency audit"
+      ],
+      "checks": [
+        {
+          "text": "Final immutable baseline revision passes consolidated automated verification",
+          "done": true
+        },
+        {
+          "text": "Browser workflow and target exports have recorded outcomes",
+          "done": true
+        },
+        {
+          "text": "Dependency findings and untested targets are disclosed",
+          "done": true
+        }
+      ],
+      "evidence": "Final baseline remote CI run 41100222611 on revision 19aea24 completed successfully at 17:37:43 UTC: 55 tests (API20, native8, web6, independentQA21), separate real-API native integration, 12/12 synthetic evaluations, strict types and all builds/exports. Final browser journeys passed. Audit has no critical/high/moderate findings; CI8 and local14 propagated low entries share the same one deepmerge advisory. These are baseline totals, excluding the new AI phase.",
+      "phase": "baseline",
+      "completed_at": "2026-10-30T17:49:22Z"
+    },
+    {
+      "number": 11,
+      "title": "Project documentation",
+      "status": "complete",
+      "goal": "Deliver a reproducible build guide and an official editable product and technical reference.",
+      "deliverables": [
+        "Step-by-step HTML build guide and this stage plan",
+        "Official DOCX with historical real-world examples",
+        "Author details, source manifest and regeneration tools"
+      ],
+      "checks": [
+        {
+          "text": "Initial HTML desktop and phone-width layout review passed",
+          "done": true
+        },
+        {
+          "text": "Baseline DOCX every-page render review completed after final edits",
+          "done": true
+        },
+        {
+          "text": "Baseline documentation reconciled with its final code and evidence",
+          "done": true
+        }
+      ],
+      "evidence": "Baseline official DOCX has 14 inspected pages, verified author metadata and primary-source examples. Final CI 55, browser 1182/500, native 430 canvas and unverified device/provider limits are explicit. HTML guide and separate two-phase plan pass structural checks and desktop/narrow layout review. Optional AI extension documentation remains a distinct stage 17 deliverable.",
+      "phase": "baseline",
+      "completed_at": "2026-10-30T17:49:22Z"
+    },
+    {
+      "number": 12,
+      "title": "Integration and handoff readiness",
+      "status": "complete",
+      "goal": "Prepare a verified, cloneable project and handoff package with honest platform and deployment boundaries.",
+      "deliverables": [
+        "Verified implementation source and documentation snapshot",
+        "Prepared cloneable project and downloadable handoff contents",
+        "Clone/run instructions, capabilities, test results and remaining limits"
+      ],
+      "checks": [
+        {
+          "text": "Verified implementation snapshot is committed and available on GitHub",
+          "done": true
+        },
+        {
+          "text": "Source and documentation package verified",
+          "done": true
+        },
+        {
+          "text": "Clone/run instructions and limitations included in the prepared handoff package",
+          "done": true
+        }
+      ],
+      "evidence": "Implementation commit 5a8619894f5cbc8dacb182fd3094427038fad482 and source tree 1eda3f01276441605123e781bc58c35e40aa2f07 were verified remotely. GitHub Actions run 41106211194 passed 125 tests, integration, 12 offline evaluations, typechecks and all exports. This release closure prepares final handoff contents; successful download or attachment receipt is not claimed.",
+      "phase": "baseline",
+      "completed_at": "2026-10-30T18:25:00Z"
+    },
+    {
+      "number": 13,
+      "phase": "ai",
+      "title": "Optional provider reasoning",
+      "status": "complete",
+      "goal": "Add provider choice without giving model output authority over dispatch or hard constraints.",
+      "deliverables": [
+        "Fireworks and Nebius adapters alongside the optional OpenAI path",
+        "Bounded read-only tool investigation and explicit provider status",
+        "No automatic startup calls or hidden vendor fallback"
+      ],
+      "checks": [
+        {
+          "text": "Provider-specific request contracts pass mocked tests",
+          "done": true
+        },
+        {
+          "text": "Evidence requirements and deterministic rechecks remain enforced",
+          "done": true
+        },
+        {
+          "text": "Configured, enabled, available and live-tested states remain distinct",
+          "done": true
+        }
+      ],
+      "evidence": "Fireworks, Nebius and OpenAI request contracts, bounded tool investigation, exact evidence consent and deterministic approval passed mocked API and real-API client tests. No real model call occurred.",
+      "completed_at": "2026-10-30T18:05:00Z"
+    },
+    {
+      "number": 14,
+      "phase": "ai",
+      "title": "Reference retrieval and document drafts",
+      "status": "complete",
+      "goal": "Add remote reference discovery without silently promoting untrusted material to operating rules.",
+      "deliverables": [
+        "Pinecone organization-scoped retrieval and consented approved-reference indexing",
+        "Selectable domain-restricted Tavily or Keenable source discovery",
+        "LlamaParse document upload and bounded status checks"
+      ],
+      "checks": [
+        {
+          "text": "Tenant namespace and retrieval fallback are verified",
+          "done": true
+        },
+        {
+          "text": "External references stay attributed and nonauthoritative",
+          "done": true
+        },
+        {
+          "text": "Document transfer and separate human draft review are tested",
+          "done": true
+        }
+      ],
+      "evidence": "Pinecone organization-scoped search and reviewed-reference indexing, explicit Tavily/Keenable discovery, local reference_only retrieval and asynchronous LlamaParse draft review passed mocked tests. Existing vendor indexes are not provisioned; live outcomes remain unverified.",
+      "completed_at": "2026-10-30T18:05:00Z"
+    },
+    {
+      "number": 15,
+      "phase": "ai",
+      "title": "Preferences tracing and voice drafts",
+      "status": "complete",
+      "goal": "Support advisory personalization and inspectable integrations without creating unsafe operational memory.",
+      "deliverables": [
+        "Mem0 structured noncritical preferences and scoped deletion",
+        "Optional redacted LangSmith tracing",
+        "ElevenLabs transcription into reviewable rescue-note drafts"
+      ],
+      "checks": [
+        {
+          "text": "Memory is scoped to actor and organization",
+          "done": true
+        },
+        {
+          "text": "Tracing payload excludes prohibited operational details",
+          "done": true
+        },
+        {
+          "text": "Transcription cannot dispatch or invent validated donation fields",
+          "done": true
+        }
+      ],
+      "evidence": "Actor-scoped Mem0 preferences and deletion, separately consented redacted LangSmith tracing and ElevenLabs rescue-note drafts passed mocked payload, isolation and review tests. No real memory write, trace or audio upload occurred.",
+      "completed_at": "2026-10-30T18:05:00Z"
+    },
+    {
+      "number": 16,
+      "phase": "ai",
+      "title": "Consent security and cross-client review",
+      "status": "complete",
+      "goal": "Require local disclosure and exact one-use consent before external work.",
+      "deliverables": [
+        "Server-only configuration and default-off gates",
+        "Version-bound short-lived one-use payload consent",
+        "AI Studio and native capability/review surfaces with regression tests"
+      ],
+      "checks": [
+        {
+          "text": "Missing expired mismatched or replayed consent fails closed",
+          "done": true
+        },
+        {
+          "text": "Role tenant file-size and provider boundary tests pass",
+          "done": true
+        },
+        {
+          "text": "Mocked client journeys and full regression checks are recorded",
+          "done": true
+        }
+      ],
+      "evidence": "Final local aggregate passed at 18:05 UTC: 125 tests (API 33, native 19, web 19, independent 54), 9 native real-API checkpoints, 12 offline evaluations, strict TypeScript and web/Android/iOS exports. Consent ownership, expiry, replay, input/evidence changes, partial receipts and default-off boundaries passed. Native device and live-provider execution remain unverified.",
+      "completed_at": "2026-10-30T18:05:00Z"
+    },
+    {
+      "number": 17,
+      "phase": "ai",
+      "title": "AI integration readiness and handoff",
+      "status": "complete",
+      "goal": "Deliver the source and setup guidance without pretending real services have been activated.",
+      "deliverables": [
+        "Provider matrix separating mocked tests from live validation",
+        "Updated build guide and official editable documentation",
+        "Final coherent commit push and remote verification"
+      ],
+      "checks": [
+        {
+          "text": "Final implementation and test evidence match the documentation",
+          "done": true
+        },
+        {
+          "text": "All DOCX pages and affected desktop HTML reviewed; narrow retest limit documented",
+          "done": true
+        },
+        {
+          "text": "Published implementation verified; documentation and live-enablement guidance prepared",
+          "done": true
+        }
+      ],
+      "evidence": "Canonical 17-service matrix matches code, both HTML files and the 19-page DOCX. Implementation revision 5a861989 passed run 41106211194. All rendered document pages and desktop HTML at 1182 CSS pixels passed review; final narrow HTML retest was blocked and is not claimed. Closure documentation is prepared for separate publication and delivery. Live activation is not claimed or required.",
+      "completed_at": "2026-10-30T18:25:00Z"
+    }
+  ],
+  "updated_at": "2026-10-30T21:13:00Z",
+  "phases": [
+    {
+      "id": "baseline",
+      "title": "Phase 1 Verified local product",
+      "description": "The original twelve-stage delivery. Completion establishes the stated local source and test boundary, not production readiness."
+    },
+    {
+      "id": "ai",
+      "title": "Phase 2 Optional AI integrations",
+      "description": "An additional five-stage extension. Implementation and mocked verification are separate from future account activation and real-provider validation."
+    }
+  ],
+  "current_release": {
+    "title": "Rescue Pipeline and Liquid Organic workspace",
+    "status": "verified",
+    "scope": "Full-width grouped navigation; snapshot-derived rescue lanes and explicit terminal views; readable 16px body text; organic Framer Motion entry with reduced-motion controls. Existing roles, routes and server-authorized actions are preserved. Separate Expo native screens are unchanged.",
+    "evidence": "Initial local verification passed 130 tests, 9 native/API checkpoints, 12 offline evaluations with zero provider calls, typechecks and web build. The aggregate failed at Expo export with SIGKILL; an explicit all-platform --max-workers 1 retry exited 0. After a terminal-label fix, web tests passed 25/25 and web build passed again: 131 constituent tests including earlier API 33, native 19 and independent QA 54, not a fresh full aggregate run. Actual-app desktop and approximately 500px narrow review passed; role scopes, volunteer Accept dialog, receipt distinction, rapid navigation/refresh and local reduced-motion preference persistence were checked. The updated 20-page DOCX was rendered and every page inspected at 21:02 UTC; author and canonical service-matrix checks passed. Fresh implementation CI run 41128268002 passed for commit 9057ea4c46e446135d8d62636597b8572419c28f: verification job 124312296895 and Windows launcher job 124312296454 both succeeded. Logs confirm 131 tests, 12 evaluations with zero provider calls and all platform exports. This fresh aggregate CI pass is distinct from the earlier local retry. Windows pulled clean HEAD 9057ea4, installed dependencies and passed full verification with 130 tests passed, zero failed and one existing POSIX-only test skipped; 9 integration checkpoints, 12 evaluations, all platform exports and 24 launcher assertions passed. Direct/proxied health and the pipeline component/CSS returned HTTP 200. Local Windows browser visuals were not exercised; the cloud browser review is separate. Final updated DOCX review passed at 21:13 UTC: 20 pages, with changed pages visually re-inspected and all other page PNGs byte-identical to the complete earlier page review.",
+    "pending": [],
+    "boundary": "No live provider, external dispatch, physical-device certification or production readiness is claimed. OS reduced-motion emulation and exact animation-frame timing were not exercised."
+  }
+}

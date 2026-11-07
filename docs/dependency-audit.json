@@ -1,0 +1,267 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@expo/cli": {
+      "name": "@expo/cli",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@expo/config",
+        "@expo/metro-config",
+        "@expo/prebuild-config",
+        "expo"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/expo/node_modules/@expo/cli"
+      ],
+      "fixAvailable": true
+    },
+    "@expo/config": {
+      "name": "@expo/config",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "deepmerge"
+      ],
+      "effects": [
+        "@expo/cli",
+        "@expo/metro-config",
+        "@expo/prebuild-config",
+        "expo",
+        "expo-constants"
+      ],
+      "range": "",
+      "nodes": [
+        "node_modules/@expo/config"
+      ],
+      "fixAvailable": false
+    },
+    "@expo/metro-config": {
+      "name": "@expo/metro-config",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@expo/config",
+        "expo"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/@expo/metro-config"
+      ],
+      "fixAvailable": true
+    },
+    "@expo/prebuild-config": {
+      "name": "@expo/prebuild-config",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@expo/config",
+        "expo"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/@expo/prebuild-config"
+      ],
+      "fixAvailable": true
+    },
+    "@expo/vector-icons": {
+      "name": "@expo/vector-icons",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "expo-font"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/@expo/vector-icons"
+      ],
+      "fixAvailable": true
+    },
+    "babel-preset-expo": {
+      "name": "babel-preset-expo",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "expo"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/babel-preset-expo"
+      ],
+      "fixAvailable": true
+    },
+    "deepmerge": {
+      "name": "deepmerge",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1243505,
+          "name": "deepmerge",
+          "dependency": "deepmerge",
+          "title": "deepmerge mergeObject() allows prototype poisoning of returned objects",
+          "url": "https://github.com/advisories/GHSA-gcqx-w48m-w2h4",
+          "severity": "low",
+          "cwe": [
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": ">=4.2.0 <=4.3.1"
+        }
+      ],
+      "effects": [
+        "@expo/config"
+      ],
+      "range": "",
+      "nodes": [
+        "node_modules/deepmerge"
+      ],
+      "fixAvailable": false
+    },
+    "expo": {
+      "name": "expo",
+      "severity": "low",
+      "isDirect": true,
+      "via": [
+        "@expo/cli",
+        "@expo/config",
+        "@expo/metro-config",
+        "@expo/vector-icons",
+        "babel-preset-expo",
+        "expo-asset",
+        "expo-constants",
+        "expo-file-system",
+        "expo-font",
+        "expo-keep-awake"
+      ],
+      "effects": [
+        "babel-preset-expo",
+        "expo-asset",
+        "expo-file-system",
+        "expo-font",
+        "expo-keep-awake",
+        "expo-secure-store"
+      ],
+      "range": "",
+      "nodes": [
+        "node_modules/expo"
+      ],
+      "fixAvailable": false
+    },
+    "expo-asset": {
+      "name": "expo-asset",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "expo",
+        "expo-constants"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/expo-asset"
+      ],
+      "fixAvailable": true
+    },
+    "expo-constants": {
+      "name": "expo-constants",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@expo/config",
+        "expo"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/expo-constants"
+      ],
+      "fixAvailable": true
+    },
+    "expo-file-system": {
+      "name": "expo-file-system",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "expo"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/expo-file-system"
+      ],
+      "fixAvailable": true
+    },
+    "expo-font": {
+      "name": "expo-font",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "expo"
+      ],
+      "effects": [
+        "@expo/vector-icons"
+      ],
+      "range": "",
+      "nodes": [
+        "node_modules/expo-font"
+      ],
+      "fixAvailable": true
+    },
+    "expo-keep-awake": {
+      "name": "expo-keep-awake",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "expo"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/expo-keep-awake"
+      ],
+      "fixAvailable": true
+    },
+    "expo-secure-store": {
+      "name": "expo-secure-store",
+      "severity": "low",
+      "isDirect": true,
+      "via": [
+        "expo"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/expo-secure-store"
+      ],
+      "fixAvailable": false
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 14,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 14
+    },
+    "dependencies": {
+      "prod": 699,
+      "dev": 65,
+      "optional": 64,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 775
+    }
+  }
+}

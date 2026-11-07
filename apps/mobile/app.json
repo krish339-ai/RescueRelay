@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "RescueRelay",
+    "slug": "rescuerelay",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "scheme": "rescuerelay",
+    "backgroundColor": "#F6F3EA",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "org.rescuerelay.app",
+      "infoPlist": {
+        "NSAppTransportSecurity": {
+          "NSAllowsLocalNetworking": true
+        }
+      }
+    },
+    "android": {
+      "package": "org.rescuerelay.app",
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": true
+    },
+    "plugins": [
+      "expo-secure-store",
+      "./plugins/withLocalDevelopment.cjs"
+    ],
+    "web": {
+      "bundler": "metro",
+      "name": "RescueRelay Mobile"
+    }
+  }
+}

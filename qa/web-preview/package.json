@@ -1,0 +1,8 @@
+{
+  "name": "rescuerelay-actual-delivery-preview",
+  "private": true,
+  "description": "Managed QA launcher for the exact delivered single-server application, not a mock API.",
+  "scripts": {
+    "dev": "node --import tsx launch.mjs"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "@rescuerelay/mobile",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "start": "node scripts/expo.mjs start",
+    "android": "node scripts/expo.mjs run:android",
+    "ios": "node scripts/expo.mjs run:ios",
+    "web": "node scripts/expo.mjs start --web",
+    "typecheck": "tsc --noEmit",
+    "build": "node scripts/expo.mjs export --platform all --clear",
+    "export:native": "node scripts/expo.mjs export --platform android --platform ios --clear",
+    "test": "node --import tsx --test src/*.test.ts",
+    "test:integration": "node --import tsx scripts/integration-smoke.mjs",
+    "dev": "node --import tsx scripts/preview.mjs"
+  },
+  "dependencies": {
+    "@rescuerelay/shared": "0.1.0",
+    "expo": "~54.0.38",
+    "expo-secure-store": "~15.0.8",
+    "expo-status-bar": "~3.0.9",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-web": "~0.21.0"
+  },
+  "devDependencies": {
+    "@types/react": "~19.1.10"
+  }
+}

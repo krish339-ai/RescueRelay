@@ -1,0 +1,185 @@
+{
+  "verified_on": "2026-10-30",
+  "purpose": "Primary-source context for product design; not an integration, endorsement, live route directory, or proof of an unmet market need.",
+  "sources": [
+    {
+      "id": "FH2024",
+      "title": "Harvest Heroes Small but Mighty Rescue Routes",
+      "publisher": "Forgotten Harvest",
+      "published": "2024-09-04",
+      "url": "https://www.forgottenharvest.org/harvest-heroes-small-but-mighty-rescue-routes/",
+      "fact": "A historical Wednesday route collected from Fresh Thyme and Aldi and delivered to Open Door Ministry in Canton.",
+      "boundary": "A published operating example, not a verified current route or cancellation incident."
+    },
+    {
+      "id": "WALMART2022",
+      "title": "New Food Donor Walmart in Bethel Park",
+      "publisher": "412 Food Rescue",
+      "published": "2022-11-16",
+      "url": "https://412foodrescue.org/new-food-donor-bethel-park-walmart/",
+      "fact": "Volunteers began collecting ongoing donations from Walmart in Bethel Park for local nonprofit partners.",
+      "boundary": "The article does not identify a recipient organization or document a cancellation."
+    },
+    {
+      "id": "HERO2024",
+      "title": "412 Food Rescue Celebrates 9 Years with FoodRescueHero Week",
+      "publisher": "412 Food Rescue",
+      "published": "2024-03-18",
+      "url": "https://412foodrescue.org/food-rescue-hero-week-2024/",
+      "fact": "One reported rescue delivered from Giant Eagle in South Side to Allegheny County Housing Authority Dorchester.",
+      "boundary": "A dated completed rescue, not a reported last-minute recovery."
+    },
+    {
+      "id": "HANDBOOK",
+      "title": "412 Food Rescue Volunteer Handbook",
+      "publisher": "412 Food Rescue",
+      "published": null,
+      "url": "https://public.foodrescuehero.org/412_food_rescue_volunteer_handbook.pdf",
+      "location": "PDF pages 6 and 7",
+      "fact": "The handbook requires staff approval for route changes and directs substitution requests within one hour of the pickup window to dispatch.",
+      "boundary": "Organization-specific instructions inform the human approval design; they are not a universal operating or food-safety standard."
+    },
+    {
+      "id": "TECH2023",
+      "title": "Streamlining for Good Food Rescue Hero Maximizes Impact Through 2023 Tech Improvements",
+      "publisher": "Food Rescue Hero",
+      "published": "2023-12-13",
+      "url": "https://foodrescuehero.org/streamlining-for-good-food-rescue-hero-maximizes-impact-through-2023-tech-improvements/",
+      "fact": "The platform already added volunteer substitute push notifications and improved records of rescue changes and notification delivery.",
+      "boundary": "Existing replacement features must be acknowledged; a distinct unresolved recovery gap remains a research hypothesis."
+    },
+    {
+      "id": "OPERATIONS",
+      "title": "Operational Efficiency and Automation",
+      "publisher": "Food Rescue Hero",
+      "published": null,
+      "url": "https://foodrescuehero.org/solutions/operational-efficiency/",
+      "fact": "The vendor describes last-minute substitutions, route optimization, multi-stop planning, and live rescue tracking.",
+      "boundary": "Vendor-described capabilities, not an independent performance benchmark or an endorsement."
+    }
+  ],
+  "author": {
+    "name": "Krishna Kallamadi",
+    "github": "https://github.com/krish339-ai",
+    "linkedin": "https://www.linkedin.com/in/krishna-kishore-kallamadi-a22b498/",
+    "source": "https://github.com/krish339-ai/DataQualityAgent/blob/main/README.md",
+    "basis": "Published author attribution and self-description; no unrelated product claims reused."
+  },
+  "integration_sources": [
+    {
+      "id": "FIREWORKS_API",
+      "publisher": "Fireworks AI",
+      "role": "Optional Chat Completions tool investigation",
+      "url": "https://docs.fireworks.ai/api-reference/post-chatcompletions"
+    },
+    {
+      "id": "NEBIUS_API",
+      "publisher": "Nebius Token Factory",
+      "role": "Optional OpenAI-compatible Chat Completions investigation; capabilities depend on the selected model",
+      "url": "https://docs.tokenfactory.nebius.com/quickstart"
+    },
+    {
+      "id": "PINECONE_API",
+      "publisher": "Pinecone",
+      "role": "Documents API 2026-07 integrated-embedding search; distinct from the legacy Records API",
+      "url": "https://docs.pinecone.io/reference/api/2026-07/data-plane/search_documents"
+    },
+    {
+      "id": "TAVILY_API",
+      "publisher": "Tavily",
+      "role": "Controlled public source discovery with explicit search depth and domain scope",
+      "url": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+    },
+    {
+      "id": "MEM0_API",
+      "publisher": "Mem0",
+      "role": "Structured preference storage through the memory API; not safety or operating-rule authority",
+      "url": "https://docs.mem0.ai/api-reference/memory/add-memories"
+    },
+    {
+      "id": "LANGSMITH_API",
+      "publisher": "LangChain",
+      "role": "Optional trace recording through the LangSmith REST API",
+      "url": "https://docs.langchain.com/langsmith/trace-with-api"
+    },
+    {
+      "id": "LLAMAPARSE_API",
+      "publisher": "LlamaIndex",
+      "role": "Asynchronous document parsing and expanded markdown results",
+      "url": "https://developers.llamaindex.ai/llamaparse/parse/getting_started/"
+    },
+    {
+      "id": "ELEVENLABS_API",
+      "publisher": "ElevenLabs",
+      "role": "Speech-to-text transcription; not voice calls or dispatch",
+      "url": "https://elevenlabs.io/docs/api-reference/speech-to-text/convert"
+    },
+    {
+      "id": "LLAMACLOUD_BILLING",
+      "publisher": "LlamaIndex",
+      "role": "Operator review of usage, retained-file storage and potential pay-as-you-go charges before activation",
+      "url": "https://developers.llamaindex.ai/llamaparse/general/billing/"
+    },
+    {
+      "id": "OPENAI_ACCOUNT_BOUNDARY",
+      "publisher": "OpenAI",
+      "role": "ChatGPT and API billing are managed separately; account eligibility and any linked benefit require independent verification",
+      "url": "https://help.openai.com/en/articles/9039756-managing-billing-settings-on-chatgpt-web-and-platform"
+    },
+    {
+      "id": "KEENABLE_API",
+      "publisher": "Keenable",
+      "role": "Controlled source discovery with one explicitly selected site per request",
+      "url": "https://docs.keenable.ai/api-reference/search"
+    },
+    {
+      "id": "PINECONE_UPSERT_API",
+      "publisher": "Pinecone",
+      "role": "Documents API 2026-07 asynchronous approved-reference indexing into an existing index",
+      "url": "https://docs.pinecone.io/reference/api/2026-07/data-plane/upsert_documents"
+    }
+  ],
+  "integration_source_boundary": "These primary references guide the optional adapter design. They do not verify an account, entitlement, balance, model, endpoint availability, production deployment, or live integration. Implementation and mocked test evidence are tracked separately.",
+  "service_decisions": "ai-service-decisions.json is the canonical role and implementation/activation matrix for all 17 considered services. Do not infer runtime integration from a source reference.",
+  "release_evidence_boundary": {
+    "current_revision": "Rescue Pipeline + Liquid/Organic web redesign on 30 October 2026",
+    "record": "verification.md is authoritative for executed checks; project-plan.json current_release tracks outstanding release gates.",
+    "historical_ci": [
+      {
+        "commit": "19aea24",
+        "run": "41100222611",
+        "scope": "Baseline release"
+      },
+      {
+        "commit": "5a8619894f5cbc8dacb182fd3094427038fad482",
+        "run": "41106211194",
+        "scope": "Optional AI implementation"
+      }
+    ],
+    "boundary": "Historical runs remain scoped to their original releases. The redesign has fresh published-implementation aggregate CI and Windows pull/restart verification; the earlier local SIGKILL and single-worker export retry remain disclosed. Documentation publication and attachment receipt are separate from implementation verification.",
+    "implementation_ci": {
+      "commit": "9057ea4c46e446135d8d62636597b8572419c28f",
+      "run": "41128268002",
+      "verification_job": "124312296895",
+      "windows_launcher_job": "124312296454",
+      "status": "success",
+      "tests": 131,
+      "offline_evaluations": 12,
+      "provider_calls": 0,
+      "exports": "Android, iOS and web"
+    },
+    "windows_validation": {
+      "commit": "9057ea4c46e446135d8d62636597b8572419c28f",
+      "tests_passed": 130,
+      "tests_failed": 0,
+      "tests_skipped": 1,
+      "skip_boundary": "Existing POSIX-only test",
+      "integration_checkpoints": 9,
+      "offline_evaluations": 12,
+      "launcher_assertions": 24,
+      "exports": "Android, iOS and web",
+      "health_and_pipeline_assets": "HTTP 200",
+      "boundary": "Local Windows browser visuals not exercised; cloud browser review recorded separately."
+    }
+  }
+}

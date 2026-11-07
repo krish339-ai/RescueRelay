@@ -1,0 +1,19 @@
+{
+  "id": "/",
+  "name": "RescueRelay",
+  "short_name": "RescueRelay",
+  "description": "Keep good food moving. Coordinate and recover food rescue pickups.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f5ed",
+  "theme_color": "#163d30",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

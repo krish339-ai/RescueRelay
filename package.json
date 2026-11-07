@@ -1,0 +1,41 @@
+{
+  "name": "rescuerelay",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c cyan,green \"npm run dev -w @rescuerelay/api\" \"npm run dev -w @rescuerelay/web\"",
+    "dev:api": "npm run dev -w @rescuerelay/api",
+    "dev:web": "npm run dev -w @rescuerelay/web",
+    "dev:mobile": "npm run start -w @rescuerelay/mobile",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present && npm run test:qa",
+    "eval": "npm run eval -w @rescuerelay/api",
+    "verify": "npm run typecheck && npm test && npm run test:integration && npm run eval && npm run build",
+    "test:qa": "node --import tsx --test qa/*.test.ts",
+    "db:check": "node scripts/database.mjs check",
+    "db:backup": "node scripts/database.mjs backup",
+    "db:restore": "node scripts/database.mjs restore",
+    "start": "node --import tsx apps/api/src/server.ts --web",
+    "dev:preview": "node --import tsx apps/api/src/server.ts --web",
+    "test:integration": "npm run test:integration -w @rescuerelay/mobile"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.3",
+    "tsx": "^4.20.6",
+    "@types/node": "^24.10.0"
+  },
+  "overrides": {
+    "image-size": "2.0.4",
+    "postcss": "8.5.32"
+  }
+}

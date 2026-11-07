@@ -1,0 +1,8 @@
+# Native projects are generated from app.json + config plugins (Expo CNG).
+/android/
+/ios/
+/dist/
+/.expo/
+/.env
+/.expo-home/
+/preview-dist/

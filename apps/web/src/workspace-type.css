@@ -1,0 +1,177 @@
+
+/* Internal product typography: system fonts, consistent sizes at every viewport.
+   These tokens do not change the landing page's editorial design. */
+:root {
+  --ui-font: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  --ui-body: 1rem;
+  --ui-small: 0.875rem;
+  --ui-kicker: 0.75rem;
+  --ui-heading-small: 1.25rem;
+}
+.workspace, .modal, .toast {
+  --sans: var(--ui-font);
+  --serif: var(--ui-font);
+  font-family: var(--ui-font);
+  font-size: var(--ui-body);
+  line-height: 1.6;
+}
+.workspace h1, .workspace h2, .workspace h3,
+.modal h2, .modal h3, .modal h4 {
+  font-family: var(--ui-font);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+.workspace .page-heading h1 { font-size: clamp(1.75rem, 2.5vw, 2.25rem); }
+.workspace .panel-title h2, .workspace .panel-title h3 { font-size: var(--ui-heading-small); }
+.workspace .ai-intro h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); }
+.workspace .ai-feature h3, .workspace .offer-card h3,
+.workspace .partner-card h3, .modal .plan-summary h3 { font-size: 1.5rem; }
+.modal .modal-header h2 { font-size: 1.75rem; }
+.workspace p, .modal p { line-height: 1.65; }
+.workspace .button, .workspace .text-button, .workspace .underlined-link,
+.modal .button, .modal .text-button, .modal .inline-link {
+  font-family: var(--ui-font);
+  font-size: var(--ui-body);
+  min-height: 44px;
+  line-height: 1.4;
+  white-space: normal;
+}
+.workspace .eyebrow, .modal .eyebrow { letter-spacing: .08em; line-height: 1.5; }
+.workspace .badge, .modal .badge { font-size: var(--ui-small); line-height: 1.4; white-space: normal; }
+.workspace .section-label, .modal .section-label { font-size: var(--ui-small); letter-spacing: .04em; }
+.workspace .icon-button, .modal .icon-button { min-width: 44px; min-height: 44px; flex-shrink: 0; }
+.workspace .sidebar nav button { font-size: var(--ui-body); min-height: 48px; }
+.workspace .sidebar { width: 260px; }
+.workspace .workspace-main { margin-left: 260px; width: calc(100% - 260px); min-width: 0; }
+.workspace .workspace-header { height: auto; min-height: 72px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
+.workspace .header-breadcrumb { min-width: 0; flex-wrap: wrap; gap: 8px; }
+.workspace .org-select strong { max-width: 165px; }
+.workspace .profile strong { max-width: 125px; }
+.workspace .sidebar-note { padding: 18px; }
+.workspace .sidebar-note strong { font-size: 1.25rem; font-weight: 600; line-height: 1.35; }
+.workspace .sidebar-note p { font-size: var(--ui-small); color: #586b49; }
+.workspace .workspace-content { padding-top: 32px; }
+.workspace .page-heading, .workspace .demo-banner, .workspace .sync-banner,
+.workspace .content-toolbar, .workspace .panel-title, .workspace .recovery-banner,
+.workspace .offer-card footer, .workspace .workspace-footer { flex-wrap: wrap; }
+.workspace .page-heading > .button { max-width: none; flex-shrink: 0; }
+.workspace .demo-banner > span, .workspace .sync-banner > span { max-width: none; flex: 1 1 240px; }
+.workspace .metric { min-width: 0; }
+.workspace .metrics-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
+.workspace .metric > div { align-items: start; }
+.workspace .metric > small { white-space: normal; }
+.workspace .metric > strong { font-size: 2.125rem; font-weight: 600; letter-spacing: -.03em; }
+.workspace .offer-grid, .workspace .partner-grid, .workspace .ai-feature-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+.workspace .rescue-row { flex-wrap: wrap; gap: 14px; }
+.workspace .rescue-main { flex: 1 1 220px; min-width: 0; overflow-wrap: anywhere; }
+.workspace .rescue-main strong, .workspace .rescue-main > span { white-space: normal; }
+.workspace .rescue-meta { flex: 0 1 auto; min-width: 0; }
+.workspace .search-box { max-width: 360px; min-height: 46px; }
+.workspace .filter-tabs button { min-height: 44px; white-space: normal; }
+.workspace .offer-numbers { flex-wrap: wrap; gap: 16px; }
+.workspace .offer-card-top, .workspace .ai-feature-top { flex-wrap: wrap; }
+.workspace .ai-intro { flex-wrap: wrap; }
+.workspace .ai-intro > div:first-child { flex: 1 1 320px; min-width: 0; }
+.workspace .ai-control-card { flex: 1 1 240px; min-width: 0; max-width: 350px; }
+.workspace .ai-provider-row { flex-wrap: wrap; gap: 14px; }
+.workspace .ai-provider-name { min-width: 155px; }
+.workspace .ai-provider-action { margin-left: auto; }
+.workspace .ai-feature-top > .badge { max-width: none; }
+.workspace .ai-provider-pills span { line-height: 1.5; }
+.workspace .ai-receipt > summary { flex-wrap: wrap; }
+.workspace .ai-receipt > summary > span:nth-child(2) { flex: 1 1 220px; }
+.workspace .ai-receipt-body dl > div { display: grid; grid-template-columns: minmax(100px, 1fr) minmax(0, 2fr); }
+.workspace .ai-receipt-body dd, .workspace .ai-receipt-body code,
+.workspace .settings-card dd, .modal .ai-consent-evidence { overflow-wrap: anywhere; }
+.workspace .route-sketch text { font-size: 12px; }
+.workspace table, .modal table { border-collapse: collapse; width: 100%; }
+.workspace th, .workspace td, .modal th, .modal td { font-size: var(--ui-small); line-height: 1.6; padding: 12px; }
+.workspace .table-wrap, .modal .table-wrap { overflow-x: auto; max-width: 100%; }
+.workspace pre, .modal pre { font-size: var(--ui-small); max-width: 100%; overflow-x: auto; }
+.modal { width: min(640px, calc(100vw - 32px)); }
+.modal.wide { width: min(1000px, calc(100vw - 32px)); }
+.modal .field input, .modal .field select, .modal .field textarea,
+.workspace .field input, .workspace .field select, .workspace .field textarea {
+  font-family: var(--ui-font);
+  font-size: var(--ui-body);
+  line-height: 1.5;
+  min-height: 48px;
+}
+.modal .field > span, .workspace .field > span { font-size: var(--ui-body); font-weight: 600; }
+.modal .field small, .modal .field-hint, .workspace .field small, .workspace .field-hint { font-size: var(--ui-small); color: #586d4a; }
+.modal .checkbox-field { font-size: var(--ui-body); gap: 12px; }
+.modal .checkbox-field input { min-width: 20px; width: 20px; height: 20px; margin-top: 3px; }
+.modal .notice, .workspace .notice { font-size: var(--ui-body); }
+.modal .notice > svg, .workspace .notice > svg { flex-shrink: 0; }
+.modal .form-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.modal .candidate summary, .modal .plan-meta, .modal .replacement { flex-wrap: wrap; }
+.modal .candidate summary > span:nth-child(2) { min-width: 0; flex: 1 1 180px; }
+.modal .candidate-checks { padding-left: 20px; }
+.modal .rescue-timeline { flex-wrap: wrap; gap: 16px; }
+.modal .rescue-timeline > div { min-width: 95px; }
+.workspace .community-note p { max-width: 42ch; }
+.workspace .onboarding-panel { flex-wrap: wrap; }
+.workspace .onboarding-steps { flex: 1 1 270px; min-width: 0; }
+.toast { font-size: var(--ui-small); }
+@media (max-width: 1100px) {
+  .workspace .bottom-grid, .workspace .next-moves { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  .workspace .sidebar { width: min(280px, 88vw); }
+  .workspace .workspace-main { width: 100%; margin-left: 0; }
+  .workspace .workspace-content { padding: 24px 20px 0; }
+  .workspace .workspace-header { padding: 10px 16px; gap: 8px; }
+  .workspace .header-actions { margin-left: auto; }
+  .workspace .header-breadcrumb { font-size: var(--ui-small); }
+  .workspace .header-breadcrumb strong { overflow-wrap: anywhere; }
+  .workspace .connection-indicator { font-size: var(--ui-small); }
+  .workspace .page-heading { align-items: flex-start; }
+  .workspace .page-heading > div { flex: 1 1 240px; }
+  .workspace .page-heading > .button { width: auto; }
+  .workspace .recovery-banner > .button { margin-left: 0; }
+  .workspace .rescue-meta { width: 100%; padding-left: 0; flex-wrap: wrap; align-items: flex-start; }
+  .workspace .rescue-row .row-arrow { position: static; }
+  .workspace .ai-control-card { max-width: none; }
+  .workspace .ai-provider-row { display: flex; align-items: flex-start; }
+  .workspace .ai-provider-action { width: 100%; margin-left: 0; }
+  .workspace .ai-receipt-body dl > div { display: grid; grid-template-columns: 1fr; gap: 4px; }
+  .workspace .workspace-footer { font-size: var(--ui-small); }
+  .modal .modal-inner { padding: 24px 20px; }
+  .modal .form-row, .modal .form-fieldset .form-row,
+  .modal .citation-grid, .modal .detail-route { grid-template-columns: minmax(0, 1fr); }
+  .modal .plan-summary { align-items: flex-start; }
+  .modal .plan-summary > div { min-width: 0; }
+  .modal .ai-consent-summary { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Darker supporting text keeps the larger type legible within the existing palette. */
+.workspace :is(.page-heading p, .panel-title p, .activity-list p, .activity-list small,
+  .offer-donor, .offer-window, .offer-window small, .offer-card > p, .partner-card > p,
+  .partner-note, .community-note p, .route-note p, .metric > div, .metric > small,
+  .org-select small, .profile small, .nav-label, .workspace-footer,
+  .ai-intro > div:first-child > p, .ai-feature > p, .ai-safety-strip > p,
+  .ai-live-label, .ai-global-status, .ai-control-card > span, .ai-receipt small,
+  .ai-receipt-body dt, .ai-input-hint, .ai-local-note) { color: #53684b; }
+.workspace .ai-control-card > p { color: #53684b !important; }
+.modal :is(.form-footnote, .field-hint, .candidate summary small, .plan-summary p,
+  .citation p, .trace p, .trace small, .detail-route p, .rescue-timeline small) { color: #53684b; }
+.modal input::placeholder, .modal textarea::placeholder,
+.workspace input::placeholder, .workspace textarea::placeholder { color: #697c60; }
+@media (max-width: 1100px) {
+  .workspace .overview-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 440px) {
+  .workspace .ai-control-card { display: flex; flex-direction: column; align-items: flex-start; }
+  .workspace .settings-card dl > div { flex-wrap: wrap; }
+  .workspace .ai-provider-name { min-width: 0; flex-basis: 100%; }
+}
+.workspace .ai-receipt-body dd { max-width: none; min-width: 0; }
+.modal .detail-route > div { min-width: 0; overflow-wrap: anywhere; }
+.modal .rescue-timeline small { white-space: normal; text-align: center; }
+@media (max-width: 760px) {
+  .workspace .ai-receipt-body dd { text-align: left; }
+  .modal .rescue-timeline > div:not(:last-child):after { display: none; }
+}
