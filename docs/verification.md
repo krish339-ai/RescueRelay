@@ -1,3 +1,13 @@
+# Local AI setup and bounded live validation — 7 November 2026
+
+Nine providers were configured and enabled in the ignored local settings. After restart, authenticated demo-coordinator capability checks confirmed all nine available with no missing settings. ElevenLabs remains intentionally parked. Fireworks, Nebius and OpenAI passed direct live arithmetic requests; Tavily and Keenable passed direct public searches; Mem0 and LlamaParse passed authenticated metadata checks; LangSmith's newly created Local destination was verified but no trace was sent.
+
+Pinecone passed a real one-document upsert (HTTP 202) and first-attempt retrieval (HTTP 200), using the actual consent/operation routes in an isolated in-memory app instance with synthetic reference data. No local fallback was used, and the running demo database was unchanged. This was not a browser or demo-workspace indexing test.
+
+See [the dated validation report](ai-local-validation-2026-11-07.md) for provider-specific evidence, the retained synthetic document, configuration scope and outstanding end-to-end checks. Historical mock-only/no-live-call statements below describe their original release checkpoints, not this later local session. No new aggregate CI or full workflow pass is claimed.
+
+---
+
 # Rescue Pipeline + Liquid/Organic workspace — local verification
 
 **Revision under review: 30 October 2026.** This section is the current redesign record; all release and Windows results below are historical and must not be attributed to this new source revision.

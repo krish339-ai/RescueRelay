@@ -25,7 +25,7 @@
   <nav>
     <a href="project-plan.html">Project plan and stage status</a><a href="#scope">01 Product boundary</a><a href="#evidence">02 Ground the problem</a><a href="#architecture">03 Choose the architecture</a><a href="#domain">04 Model the operation</a><a href="#agent">05 Build the recovery planner</a><a href="#controls">06 Add approval controls</a><a href="#setup">07 Run locally</a><a href="#walkthrough">08 Exercise the workflow</a><a href="#api">09 Use the API</a><a href="#mobile">10 Run on phones</a><a href="#verify">11 Verify the build</a><a href="#operations">12 Operate and troubleshoot</a><a href="#ai-services">Optional AI service decisions</a><a href="#roadmap">13 Enterprise roadmap</a><a href="#pipeline-workspace">Rescue Pipeline workspace</a><a href="#sources">Sources and companion files</a>
   </nav>
-  <p class="small-nav">Version 0.1.0<br>Documentation date 30 October 2026<br>Local-first reference build</p>
+  <p class="small-nav">Version 0.1.0<br>Updated 7 November 2026<br>Local-first reference build</p>
 </aside>
 <main id="content">
   <header>
@@ -35,7 +35,7 @@
     <p><strong>Author: Krishna Kallamadi</strong> · <a href="https://www.linkedin.com/in/krishna-kishore-kallamadi-a22b498/">Connect on LinkedIn</a> · <a href="https://github.com/krish339-ai">GitHub</a></p>
     <div class="meta"><span class="tag green">Human approved recovery</span><span class="tag">Web and mobile source</span><span class="tag">Synthetic demonstration data</span><span class="tag">Release 0.1.0</span></div>
     <div class="notice"><p><strong>Scope matters.</strong> This is a local-first reference implementation, not a production dispatch service. Seeded names, locations, rescue events, travel estimates, and outcome metrics are synthetic. Notifications remain inside the application. No real volunteer is contacted, no live route is booked, and no food-safety certification is provided.</p></div>
-    <p class="small"><strong>Revision boundary.</strong> This guide covers the verified local baseline and the separately labeled optional AI extension. The extension implementation and mocked verification passed under <a href="project-plan.html#phase-ai">Phase 2 acceptance gates</a> and <a href="ai-api-contract.md">its API contract</a>. The final extension implementation passed remote CI separately from the historical baseline. This release closure prepares the handoff package; its publication and attachment delivery are reported separately. No adapter is represented as live-connected.</p>
+    <p class="small"><strong>Revision boundary.</strong> The release narrative and service matrix record the 30 October baseline and mocked AI-extension checks under <a href="project-plan.html#phase-ai">Phase 2 acceptance gates</a>. Later operator-authorized configuration enabled nine providers locally. See <a href="#local-ai-validation">the 7 November setup update</a> and <a href="ai-local-validation-2026-11-07.md">provider-specific results</a> for demo-account readiness, bounded live tests and remaining gaps. Historical mock-only statements are not the latest local account status.</p>
   </header>
 
   <section id="scope"><span class="section-num">Step 01</span><h2>Define the product boundary</h2>
@@ -266,6 +266,19 @@ npm run db:restore -- --source backups/snapshot.db --output data/restored.db</co
     <p class="small">The display uses stored records and estimated servings, not live vehicle tracking or fabricated timing. Windows launchers, provider defaults, role permissions and server mutation validation are not relaxed by this redesign.</p>
   </section>
 
+  <section id="local-ai-validation"><span class="section-num">7 November 2026 update</span><h2>Local AI configuration and validation</h2>
+    <p>Nine providers are configured and enabled in the ignored local settings; ElevenLabs remains parked. An authenticated demo coordinator verified all nine available after restart. Direct provider checks and the isolated Pinecone test have different coverage, recorded in the <a href="ai-local-validation-2026-11-07.md">dated report</a> and sections 21–24 of the <a href="RescueRelay-Project-Documentation.docx">updated Word document</a>.</p>
+    <ol class="steps">
+      <li>Create a root <code>.env</code> from <code>.env.example</code> only if it is absent. Preserve existing credentials and confirm Git ignores the file.</li>
+      <li>Save each provider's key and required model or resource settings privately. For LlamaParse, the verified options are <code>cost_effective</code> and <code>latest</code>.</li>
+      <li>Create the Pinecone index in the key's project: Serverless, AWS Virginia, On-demand, with a <code>chunk_text</code> string field embedding through <code>llama-text-embed-v2</code>, 1024 dimensions and cosine. Save the ready index's Host.</li>
+      <li>In LangSmith's agent-based interface, connect RescueRelay and select Local. Verify that destination's actual tracing project and workspace scope; this session resolved <code>rescuerelay-local</code>.</li>
+      <li>After validating access, enable the global and intended provider flags and restart. The Windows launcher honors explicit root settings; inherited process values take precedence. Sign in as demo coordinator and open Workspace, AI Studio, then Tools &amp; Controls.</li>
+      <li>Review a separate consent before each live operation. Inspect the receipt and actual result, including any local fallback. The static Live testing unverified badge does not incorporate manual test evidence.</li>
+    </ol>
+    <p>Fireworks, Nebius and OpenAI passed direct arithmetic requests; Tavily and Keenable passed direct public searches. Mem0 and LlamaParse passed authenticated metadata checks; LangSmith's destination was verified without sending a trace. Pinecone accepted one synthetic document and retrieved it on the first search through real app routes in an isolated in-memory instance. The running demo database was unchanged. Memory operations, file parsing, trace ingestion and model-driven investigations remain untested live.</p>
+  </section>
+
   <section id="sources"><span class="section-num">Reference</span><h2>Companion files and source map</h2>
     <ul class="sources"><li><a href="project-plan.html">Twelve stage project plan</a><span>Acceptance gates and factual completion status.</span></li><li><a href="RescueRelay-Project-Documentation.docx">Official project documentation</a><span>Editable product and technical report with source-grounded examples, architecture, boundaries, and roadmap.</span></li><li><a href="implementation-plan.md">Implementation plan</a><span>Build sequence, acceptance gates, and architecture decisions.</span></li><li><a href="api-contract.md">Client integration contract</a><span>Endpoint fields, response types, roles, and mutation semantics.</span></li><li><a href="verification.md">Verification record</a><span>Observed commands, results, and unverified targets.</span></li><li><a href="authoring.md">Documentation maintenance guide</a><span>Optional Python toolchain, regeneration, and review requirements.</span></li><li><a href="evidence.json">Primary-source evidence manifest</a><span>Dates, URLs, factual claims, and limits of each example.</span></li></ul>
     <p class="small">Technical references: <a href="https://nodejs.org/download/release/latest-v24.x/docs/api/sqlite.html">Node 24 SQLite</a>, <a href="https://fastify.dev/docs/latest/">Fastify documentation</a>, <a href="https://vite.dev/guide/">Vite guide</a>, and <a href="https://docs.expo.dev/">Expo documentation</a>. Upstream documentation may describe versions newer than this repository; the lockfile and workspace package manifests control the local build.</p>
@@ -274,7 +287,7 @@ npm run db:restore -- --source backups/snapshot.db --output data/restored.db</co
     <p>Krishna Kallamadi has more than 16 years of experience with on-premises and cloud databases in healthcare and insurance. His work spans database operations, performance, analytics, migration, data engineering, architecture, and AI engineering, with an emphasis on automation and data security. His background includes AWS Certified AI Practitioner certification and a focus on the AI Data Architect career path.</p>
     <p><a href="https://www.linkedin.com/in/krishna-kishore-kallamadi-a22b498/">LinkedIn</a> · <a href="https://github.com/krish339-ai">GitHub</a> · <a href="https://github.com/krish339-ai/DataQualityAgent/blob/main/README.md#about-the-author">Published author profile</a></p>
   </section>
-  <footer class="footer">RescueRelay · Build guide · 30 October 2026<br>This file is self-contained and can be opened locally without an internet connection. External references require connectivity.</footer>
+  <footer class="footer">RescueRelay · Build guide · Updated 7 November 2026<br>This file is self-contained and can be opened locally without an internet connection. External references require connectivity.</footer>
 </main>
 <script>
   for (const block of document.querySelectorAll('.codeblock')) {

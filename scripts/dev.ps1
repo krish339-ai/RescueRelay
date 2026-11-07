@@ -91,8 +91,9 @@ function Start-Relay {
     Assert-PortsFree
     $launchToken = [Guid]::NewGuid().ToString('N')
     $arguments = '-NoLogo -NoProfile -File "' + $helper + '" -Action run -Token ' + $launchToken
-    # A separate visible console survives the initiating batch file/terminal.
-    $runner = Start-Process -FilePath (Join-Path $PSHOME 'powershell.exe') -ArgumentList $arguments -WorkingDirectory $repoRoot -WindowStyle Normal -PassThru
+    # A separate console survives the initiating batch file/terminal; automation stays hidden.
+    $windowStyle = if ($env:RESCUERELAY_NONINTERACTIVE -eq '1') { 'Hidden' } else { 'Normal' }
+    $runner = Start-Process -FilePath (Join-Path $PSHOME 'powershell.exe') -ArgumentList $arguments -WorkingDirectory $repoRoot -WindowStyle $windowStyle -PassThru
     $deadline = [DateTime]::UtcNow.AddSeconds(60)
     do {
         Start-Sleep -Milliseconds 500
@@ -118,7 +119,8 @@ function Run-Relay {
     Assert-PortsFree
     $env:HOST = '127.0.0.1'
     $env:PORT = '4000'
-    $env:AI_EXTERNAL_CALLS_ENABLED = 'false'
+    # The API loads the root .env. Keep its default-off behavior while honoring
+    # explicit operator opt-in and existing process-environment overrides.
     Add-Type -Path (Join-Path $PSScriptRoot 'dev-job.cs')
     $state = [pscustomobject]@{
         root=$repoRoot; token=$Token; pid=$PID

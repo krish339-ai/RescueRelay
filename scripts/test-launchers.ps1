@@ -10,6 +10,8 @@ $sentinel = $null
 $blocker = $null
 $utf8 = New-Object Text.UTF8Encoding($false)
 $previousNoninteractive = $env:RESCUERELAY_NONINTERACTIVE
+$previousExternalCalls = $env:AI_EXTERNAL_CALLS_ENABLED
+$env:AI_EXTERNAL_CALLS_ENABLED = $null
 $env:RESCUERELAY_NONINTERACTIVE = '1'
 $passed = 0
 function Assert($condition, $message) {
@@ -40,7 +42,7 @@ try {
         Copy-Item -LiteralPath (Join-Path $sourceRoot $file) -Destination (Join-Path $fixture $file)
     }
     [IO.File]::WriteAllText((Join-Path $fixture 'package.json'), '{"name":"rescuerelay-launcher-test","private":true,"scripts":{"dev":"node server.cjs"}}', $utf8)
-    [IO.File]::WriteAllText((Join-Path $fixture 'server.cjs'), 'const http=require("node:http");for(const port of [4000,5173])http.createServer((req,res)=>{res.setHeader("Content-Type",port===4000?"application/json":"text/html");res.end(port===4000?JSON.stringify({status:"ok"}):"<title>RescueRelay launcher fixture</title>")}).listen(port,"127.0.0.1");', $utf8)
+    [IO.File]::WriteAllText((Join-Path $fixture 'server.cjs'), 'const http=require("node:http");try{process.loadEnvFile(".env")}catch(e){if(e.code!=="ENOENT")throw e}for(const port of [4000,5173])http.createServer((req,res)=>{res.setHeader("Content-Type",port===4000?"application/json":"text/html");res.end(port===4000?JSON.stringify({status:"ok",externalCallsEnabled:process.env.AI_EXTERNAL_CALLS_ENABLED==="true"}):"<title>RescueRelay launcher fixture</title>")}).listen(port,"127.0.0.1");', $utf8)
     # A free temporary DOS drive tests real drive changes, not string inspection.
     foreach ($letter in @('Z','Y','X','W','V')) {
         if (!(Test-Path ($letter + ':\')) -and !([IO.DriveInfo]::GetDrives().Name -contains ($letter + ':\'))) {
@@ -61,6 +63,7 @@ try {
     $sentinelHandle = $sentinel.Handle
     Batch 'start'
     Wait-Health
+    Assert (!(Invoke-RestMethod 'http://127.0.0.1:4000/api/health').externalCallsEnabled) 'External AI defaults off without configuration'
     $first = State
     Batch 'start'
     Assert ((State).token -eq $first.token) 'Repeated start keeps the same supervisor and launch token'
@@ -82,10 +85,17 @@ try {
     Assert (Alive $sentinel) 'Matching PID/time without the expected checkout command/token is rejected'
     Batch 'start'
     $beforeRestart = State
+    [IO.File]::WriteAllText((Join-Path $fixture '.env'), 'AI_EXTERNAL_CALLS_ENABLED=true', $utf8)
     Batch 'restart'
     Wait-Health
+    Assert ((Invoke-RestMethod 'http://127.0.0.1:4000/api/health').externalCallsEnabled) 'Restart honors explicit external AI opt-in from root .env'
     Assert ((State).token -ne $beforeRestart.token) 'Restart creates a fresh owned session'
     Assert (Alive $sentinel) 'Unrelated Node process survives restart'
+    $env:AI_EXTERNAL_CALLS_ENABLED = 'false'
+    Batch 'restart'
+    Wait-Health
+    Assert (!(Invoke-RestMethod 'http://127.0.0.1:4000/api/health').externalCallsEnabled) 'An inherited explicit false overrides root .env'
+    $env:AI_EXTERNAL_CALLS_ENABLED = $null
     Batch 'stop'
     # A real unrelated server owns the common port. The launcher must refuse it.
     $blocker = Start-Process $node -ArgumentList '-e "require(''http'').createServer((q,s)=>{s.setHeader(''Content-Type'',''text/plain'');s.end(''unrelated'')}).listen(4000,''127.0.0.1'')"' -WindowStyle Hidden -PassThru
@@ -111,4 +121,5 @@ try {
     if ((Get-Location).Path -eq $env:SystemRoot) { Pop-Location }
     if ($mapping) { & subst.exe $mapping /d }
     $env:RESCUERELAY_NONINTERACTIVE = $previousNoninteractive
+    $env:AI_EXTERNAL_CALLS_ENABLED = $previousExternalCalls
 }

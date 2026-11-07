@@ -51,6 +51,8 @@ Final optional-AI HTML review passed at a desktop viewport of 1182 CSS pixels. A
 
 ## Current release checkpoint
 
+The 7 November 2026 local-AI update expands the DOCX to 24 pages. Sections 21–24 document configuration, provider-specific test coverage, Pinecone and LangSmith setup, and demo-account validation boundaries. The generator and HTML guide were updated together. The standard renderer could not run because LibreOffice was unavailable; Microsoft Word exported the review PDF, and bundled PDFium rendered all 24 pages for visual inspection. All pages were checked without clipping, broken tables or unintended blank pages. Evidence is retained under `docs/.qa/ai-setup-update/`. The HTML content and links were updated, but this revision has not received a fresh desktop/mobile browser layout review. Earlier 20-page review records below remain historical.
+
 The 17 accepted stages retain their historical evidence. `project-plan.json` separates the newer redesign in `current_release`; update its outstanding gates from observed results without resetting earlier completed work or attributing historical CI to new code. The current DOCX must be rendered and every page reviewed before delivery. Keep the original failed aggregate verification and successful single-worker export retry distinct.
 
 Final publication-evidence rerender remained 20 pages. Changed pages 1 and 20 were visually re-inspected; pages 2–19 were byte-identical PNGs to the fully inspected earlier render. No new layout defect was observed. The current implementation checkpoint is verified; documentation publication and attachment receipt remain separate facts.

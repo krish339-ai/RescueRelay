@@ -23,7 +23,7 @@ from docx.shared import Inches, Pt, RGBColor
 
 HERE = Path(__file__).resolve().parent
 OUTPUT = HERE / "RescueRelay-Project-Documentation.docx"
-DATE = "30 October 2026"
+DATE = "7 November 2026"
 NAVY = "233B53"
 GRAY = "D9D9D9"
 PALE = "F1F5F8"
@@ -143,7 +143,8 @@ class Report:
         core.subject = "Product scope architecture operation and enterprise roadmap"
         core.author = "Krishna Kallamadi"
         core.last_modified_by = "Krishna Kallamadi"
-        core.created = core.modified = datetime(2026, 10, 30, tzinfo=timezone.utc)
+        core.created = datetime(2026, 10, 30, tzinfo=timezone.utc)
+        core.modified = datetime(2026, 11, 7, tzinfo=timezone.utc)
         core.keywords = "RescueRelay food rescue recovery coordination technical documentation"
         core.comments = "Synthetic demonstration reference. Not a certification or operational authorization."
 
@@ -217,7 +218,7 @@ class Report:
         p = self.p(text)
         p.paragraph_format.space_after = Pt(9)
         for r in p.runs:
-            r.font.name = "Liberation Mono"
+            r.font.name = "Consolas"
             r.font.size = Pt(9.5)
         return p
 
@@ -228,7 +229,7 @@ def build():
     r.d.add_paragraph("A local first food rescue recovery coordinator", "Subtitle")
     r.p(f"Author Krishna Kallamadi  •  Reference release 0.1  •  {DATE}")
     r.p("RescueRelay demonstrates how a coordinator can recover a scheduled food rescue when its volunteer becomes unavailable. It combines a shared operational record, constrained replacement planning, understandable evidence and an explicit human approval step. The result is a runnable reference implementation for product evaluation, not a live dispatch service or a certification of safe food handling.")
-    r.p("This reference covers the local product, its optional AI adapters, operating controls, setup and enterprise evolution. Page 20 records the latest Pipeline workspace revision and its verified release evidence. It is written for product reviewers, developers and food rescue operations leaders. The separate HTML build guide explains the implementation sequence. The service matrix distinguishes implemented adapters from deferred tools; mocked verification does not establish live account access or operational performance.")
+    r.p("This reference covers the local product, optional AI adapters, operating controls and enterprise evolution. Sections 21 to 24 add the 7 November local AI setup and validation: nine providers are configured, with precise test limits; ElevenLabs remains parked. It is written for product reviewers, developers and food rescue operations leaders. Historical release results and current local tests are identified separately.")
     r.h("The central decision")
     r.p("Keep a human coordinator accountable for every replacement. The planner may collect evidence, reject infeasible candidates, rank feasible options and prepare a proposal. It must not invent availability, silently change a recipient, bypass policy checks or send real-world instructions without an authorized integration and approval.")
     r.table(["Boundary", "Meaning in this release"], [
@@ -236,7 +237,7 @@ def build():
         ("Synthetic demonstration", "Seeded identities, locations, rescues and travel estimates are fictional. The in-app outbox does not deliver SMS, email or push notifications."),
         ("Future product", "Real routing, notification delivery, enterprise identity, managed hosting and operational service commitments require additional implementation and validation."),
     ], [1.45, 5.55])
-    r.p("Reading path: product and evidence on pages 2–3; technical design on pages 4–8; setup, compatibility and verification on pages 9–11; operations and enterprise evolution on pages 12–13; sources on page 14; optional AI workflows and all 17 service decisions on pages 15–19; the latest web redesign and Windows launchers on page 20.")
+    r.p("Reading path: sections 2–3 cover product evidence; 4–8 technical design; 9–11 setup and release checks; 12–14 operations, roadmap and sources; 15–19 AI workflows and historical service decisions; 20 the web redesign; 21–24 current AI configuration, setup steps and live-test evidence.")
 
     r.page(2, "Field evidence and product positioning")
     r.p("Food recovery already depends on coordinated relationships between donors, volunteer drivers and receiving organizations. The following published examples ground that model. They are historical descriptions, not evidence that those organizations use RescueRelay, endorse it or experienced the synthetic failure scenarios in this repository.")
@@ -362,7 +363,7 @@ def build():
     r.p("Use the repository README as the executable setup reference. The baseline is Node 24 and npm workspaces. Run the API and browser locally first; add a phone only after the same workflow succeeds in a desktop browser. Never place real operating data in a test environment simply to make the demonstration look more realistic.")
     r.h("Start the local application")
     r.code("git clone https://github.com/krish339-ai/RescueRelay.git\ncd RescueRelay\nnpm ci\ncp .env.example .env\nnpm run dev")
-    r.p("The repository is private; cloning requires a GitHub account that has been granted access.")
+    r.p("These commands initialize a new clone of the public repository. Preserve the existing .env when updating an already configured checkout.")
     r.p("Development binds the API to 127.0.0.1:4000 and Vite to 127.0.0.1:5173. For a same-origin local preview, run npm run build -w @rescuerelay/web, then npm start; open http://127.0.0.1:4000. This is local serving, not public deployment. Keep database paths, client API settings and permitted origins explicit. SQLite state persists across restarts; reset scenarios deliberately.")
     r.h("Walk through a recovery")
     r.bullets([
@@ -375,7 +376,8 @@ def build():
     r.h("Check failure handling deliberately")
     r.p("Generate a proposal, change relevant state through another authorized action and attempt to apply the old proposal. The expected result is a stale-state rejection, followed by a refresh and a new planning pass. Retry a successful approval with the same idempotency key to evaluate duplicate protection rather than repeatedly pressing unrelated controls.")
     r.h("Verification commands")
-    r.code("npm run typecheck\nnpm test\nnpm run test:integration\nnpm run eval\nnpm run build\n# Combined gate\nnpm run verify")
+    r.code("npm run verify")
+    r.p("The combined gate runs typecheck, test, test:integration, eval and build. Run an individual npm script when diagnosing its stage.")
     r.p("A successful command is evidence only for the code and environment actually exercised. The verification record distinguishes automated checks, browser observations, export checks and untested physical-device behavior. Do not translate a successful web build into a claim that an iOS binary was tested.")
 
     r.page(10, "Web phone Android and iOS support")
@@ -486,7 +488,7 @@ def build():
         (19, "Optional development and future integrations", deferred[4:]),
     ]:
         r.page(number, title)
-        r.p("Service roles and readiness are sourced from docs/ai-service-decisions.json. All live-provider outcomes remain unverified. A configured adapter or a passed mock is not evidence of activated billing, account entitlement, retention terms or vendor performance.")
+        r.p("This matrix preserves the 30 October release checkpoint from docs/ai-service-decisions.json, when live services were off and unverified. Sections 21 to 24 record the later local setup and bounded live tests. A passed mock alone does not establish live access or vendor performance.")
         r.table(["Service", "Use case and boundary", "Implementation and verification"],
             [(item["service"], item["role"], item["status"]) for item in items], [1.25, 3.5, 2.25])
         r.h("Official service references")
@@ -510,11 +512,93 @@ def build():
     r.h("Readability and motion")
     r.p("Body and control text use a local system sans-serif stack at 16px, with 14px supporting text and 12px section labels. Framer Motion provides spring entry, a selected-navigation indicator and brief attention settling. System and local reduced-motion controls are implemented. Browser review checked local reduced-motion preference persistence. OS preference emulation and exact frame timing were not exercised; no accessibility certification is claimed.")
     r.h("Windows launchers")
-    r.p("After npm ci, use start.bat, stop.bat or restart.bat from the checkout; PowerShell uses .\\start.bat. Paths are resolved from the launcher, not a fixed drive or username. Windows 10/11, PowerShell 5.1+, Node 24.x and npm 11+ are required. The launchers keep the demo on loopback ports 5173 and 4000 with external AI off, and stop only their verified owned session. A port conflict is reported, not silently reassigned. Manual npm commands remain supported; see README for full controls and policy limits.")
+    r.p("After npm ci, use start.bat, stop.bat or restart.bat from the checkout; PowerShell uses .\\start.bat. Paths are resolved from the launcher, not a fixed drive or username. Windows 10/11, PowerShell 5.1+, Node 24.x and npm 11+ are required. The launchers bind to loopback ports 5173 and 4000 and stop only their verified owned session. External AI defaults off; the updated launcher honors explicit root .env settings, while existing process environment values take precedence. Restart after configuration changes. A port conflict is reported, not silently reassigned.")
     r.h("Current verification boundary")
     r.p("Initial local checks passed 130 tests, 9 native/API checkpoints, 12 offline evaluations with zero provider calls, typechecks and web build. Aggregate verify failed when Expo was killed with SIGKILL; an all-platform --max-workers 1 retry exited 0. After the terminal-label fix, fresh GitHub Actions run 41128268002 passed for revision 9057ea4: 131 tests (API 33, native 19, web 25, QA 54), 12 evaluations with zero provider calls and all platform exports. Both aggregate verification and Windows launcher jobs succeeded.")
-    r.p("Actual-app desktop and approximately 500px narrow review passed, including role scopes, the volunteer Accept dialog, terminal receipt distinction, rapid navigation/refresh and local reduced-motion persistence. Windows pulled revision 9057ea4 and passed full verification: 130 passed, zero failed, one existing POSIX-only test skipped; 9 integration checkpoints, 12 evaluations, all exports and 24 launcher assertions passed. Direct/proxied health and served pipeline assets returned HTTP 200. Windows browser visuals were not exercised locally. Earlier CI and Windows results describe their own revisions only. All 17 service decisions are unchanged: 10 runtime adapters and 7 deferred choices, all live services OFF and unverified. No live dispatch, native-device certification or production readiness is claimed.")
+    r.p("Actual-app desktop and approximately 500px narrow review passed, including role scopes, the volunteer Accept dialog, terminal receipt distinction, rapid navigation/refresh and local reduced-motion persistence. Windows pulled revision 9057ea4 and passed full verification: 130 passed, zero failed, one existing POSIX-only test skipped; 9 integration checkpoints, 12 evaluations, all exports and 24 launcher assertions passed. Direct/proxied health and served pipeline assets returned HTTP 200. Windows browser visuals were not exercised locally. These 30 October results describe their own revisions, when all live services were off and unverified. The later local provider results follow; no live dispatch, native-device certification or production readiness is claimed.")
+    append_ai_setup(r)
     return r.d
+
+
+def append_ai_setup(r):
+    r.page(21, "Local AI configuration and validation")
+    r.p("On 7 November 2026, nine providers were configured and enabled in the private local settings. After restart, an authenticated demo coordinator checked the capability endpoint: all nine were configured, enabled and available with no missing settings. ElevenLabs remains parked. This local readiness check does not mean every provider workflow passed end to end.")
+    r.table(["Provider", "Observed live result", "Still untested"], [
+        ("Fireworks AI", "Model lookup and correct arithmetic completion; 56 tokens total.", "In-app investigation and tool calling."),
+        ("Nebius Token Factory", "Model catalog and correct arithmetic completion; 67 tokens total.", "In-app investigation and tool calling."),
+        ("OpenAI", "Model lookup and correct Responses arithmetic result; 25 tokens total.", "In-app investigation."),
+        ("Pinecone", "Ready index; one real upsert and retrieval through isolated app routes.", "Running demo policy population and browser review flow."),
+        ("Tavily", "Usage authentication and public USDA search; one result and one reported credit.", "In-app reference draft review and approval."),
+        ("Keenable", "Authenticated public USDA search; one result.", "In-app reference draft review and approval."),
+        ("Mem0", "Authenticated ping resolved the project.", "Memory save, recall and delete."),
+        ("LangSmith", "Saved key read the Local tracing destination; scope and project verified.", "Trace ingestion and display."),
+        ("LlamaParse", "Authenticated jobs listing; tier and version accepted.", "Document upload and parsing."),
+        ("ElevenLabs", "Parked; disabled and unconfigured.", "Key, model and transcription."),
+    ], [1.25, 3.2, 2.55])
+    r.h("What the demo account verified")
+    r.p("The check signed in through the real local demo coordinator API, read /api/ai/capabilities and signed out. Direct provider tests used the saved credentials separately. Pinecone used the actual application routes in an isolated in-memory instance. None of these results is a browser interaction test or a live food-rescue investigation.")
+    r.h("How to interpret the status label")
+    r.p("AI Studio currently shows a hardcoded Live testing unverified label; the capability field liveTested remains false. The app does not ingest these manual test results. Use this dated record for actual coverage. Credentials remain private and no full account balances, spending caps or production reliability were verified.")
+
+    r.page(22, "Configure credentials and provider settings")
+    r.p("These steps describe the completed local setup and how a teammate can configure their own checkout. API keys authorize the account that owns them; eligible usage is billed to that account. Credit availability does not replace an API key.")
+    r.bullets([
+        "Step 1  Open the repository root. If .env is absent, copy .env.example to .env. Preserve an existing file and its values. Confirm .env is ignored by Git before entering credentials.",
+        "Step 2  In each provider account, create an API key and save it directly in the matching server-side setting below. Do not put it in the browser, client code, screenshots or documentation.",
+        "Step 3  Save the additional settings shown below. Models and resources must be accessible to the same account or workspace as the key. The values record this session, not a promise of future model availability.",
+    ])
+    r.table(["Provider", "Credential setting", "Additional setting or requirement"], [
+        ("Fireworks", "FIREWORKS_API_KEY", "FIREWORKS_MODEL=\naccounts/fireworks/models/glm-5p3-flash"),
+        ("Nebius", "NEBIUS_API_KEY", "NEBIUS_MODEL=zai-org/GLM-5.3-Flash"),
+        ("OpenAI", "OPENAI_API_KEY", "OPENAI_MODEL=gpt-6-luna"),
+        ("Pinecone", "PINECONE_API_KEY", "PINECONE_INDEX_HOST from the verified index; see section 23."),
+        ("Tavily", "TAVILY_API_KEY", "Retain the approved source-domain allowlist."),
+        ("Keenable", "KEENABLE_API_KEY", "Use the explicitly selected search provider and approved site."),
+        ("Mem0", "MEM0_API_KEY", "Key must resolve the intended Mem0 project."),
+        ("LangSmith", "LANGSMITH_API_KEY", "LANGSMITH_PROJECT and workspace scope; see section 23."),
+        ("LlamaParse", "LLAMA_CLOUD_API_KEY", "LLAMAPARSE_TIER=cost_effective\nLLAMAPARSE_VERSION=latest"),
+        ("ElevenLabs", "ELEVENLABS_API_KEY", "Parked. ELEVENLABS_STT_MODEL also required before future activation."),
+    ], [1.0, 2.5, 3.5])
+    r.bullets([
+        "Step 4  Validate key access and resource compatibility before enabling a provider. Set AI_EXTERNAL_CALLS_ENABLED=true and the applicable provider flag to true. The nine flags use FIREWORKS, NEBIUS, OPENAI, PINECONE, TAVILY, KEENABLE, MEM0, LANGSMITH and LLAMAPARSE followed by _ENABLED. Keep ELEVENLABS_ENABLED=false.",
+        "Step 5  Save the file and run restart.bat. The Windows launcher honors .env; inherited process settings take precedence. Reload the file before later edits if another tool changed it, so a stale editor buffer does not overwrite new settings.",
+    ])
+
+    r.page(23, "Create the Pinecone and LangSmith resources")
+    r.h("Pinecone policy index")
+    r.p("A valid key alone is insufficient: RescueRelay requires a compatible Documents API index. In this session, the RescueRelay key and new index belonged to the existing Default project. A teammate must use the project containing their own key.")
+    r.bullets([
+        "Step 1  In Pinecone, select the project that lists your API key. Open Database, then Create index. Name the index rescuerelay-policies.",
+        "Step 2  Select Serverless capacity, AWS, us-east-1 Virginia and On-demand read capacity.",
+        "Step 3  Under Schema definition, add the String field chunk_text. Configure Dense embedding with llama-text-embed-v2, 1024 dimensions and cosine similarity. Full-text search and the additional title field may remain. This form has no separate Index format field.",
+        "Step 4  Create the index and wait for Ready. Copy its Host into PINECONE_INDEX_HOST. Verify the schema through index metadata before setting PINECONE_ENABLED=true.",
+    ])
+    r.p("The application uses Documents API version 2026-07, plain-text embedding and source-attributed results. The new index starts without approved reference content. Creating it does not populate the policy library or authorize importing operational data.")
+    r.h("LangSmith Local tracing destination")
+    r.bullets([
+        "Step 1  In LangSmith Settings, create a Personal Access Token for the intended workspace. This session used Workspace 1. Save it directly as LANGSMITH_API_KEY. A key description is not the tracing project name.",
+        "Step 2  Return to the main dashboard. In the agent-based interface, choose Connect an agent. Enter RescueRelay as the Agent name and rescuerelay as the Agent ID, then click Connect agent. The ID is fixed after creation.",
+        "Step 3  Select the Local environment. Copy the ID beside Local and verify that destination using the saved key. Read its actual tracing project name and workspace ID; do not guess from the display name.",
+        "Step 4  This session resolved LANGSMITH_PROJECT=rescuerelay-local. Save the verified scope in LANGSMITH_WORKSPACE_ID and set LANGSMITH_ENABLED=true, then restart. Different accounts may resolve different names or scopes.",
+    ])
+    r.p("The destination lookup passed, but no trace was submitted. Waiting for traces is expected until a separately consented traced operation runs. Tracing retention settings do not identify the destination and did not need changing during this setup.")
+
+    r.page(24, "Validate the demo and understand the live tests")
+    r.h("Check the running demo")
+    r.bullets([
+        "Step 1  Start or restart the local application. Open http://127.0.0.1:5173 and sign in as the demo coordinator.",
+        "Step 2  Open Workspace, then AI Studio and Tools & Controls. Confirm the intended provider is configured and enabled with no missing settings. This checks readiness; it does not send a provider request.",
+        "Step 3  For a live operation, select the provider and a small approved input. Review its consent preview, exact data transfer and request budget before execution. Each search, upload, memory action or trace has its own scope.",
+        "Step 4  Inspect the operation receipt and actual result. A completed receipt, an available status and a successful remote result are different facts. Check whether retrieval used local fallback. Do not replay uncertain writes automatically.",
+    ])
+    r.h("Pinecone test that passed")
+    r.p("The running demo had no approved references. An isolated in-memory instance of the real API therefore registered a synthetic coordinator and organization, then seeded one reference fixture labeled SYNTHETIC TEST ONLY Amber Orchard. The fixture was not a human-approved operational policy; draft approval was outside this test.")
+    r.p("Indexing and search each passed through the real consent and operation routes with separate one-use consents and the organization's hashed namespace. The transport used live Pinecone, not mocked responses. One upsert returned HTTP 202; the first search returned HTTP 200 and the exact indexed text with its matching source reference and reference_only authority. No local fallback occurred. Total external requests were one write and one search.")
+    r.p("The running demo database and configured operational policies stayed unchanged. One labeled synthetic document remains in the isolated test namespace. The ignored local test report records its namespace and document ID for inspection or cleanup. The real demo account still has no approved references indexed by this test.")
+    r.h("Populate a real demo reference later")
+    r.p("Prepare an authorized reference draft through source discovery or document parsing, review its title, text and scope, and approve it as reference knowledge. Select that approved reference for a separate Pinecone indexing consent. After acceptance, perform a separately consented search and inspect the citation. Configured hard policies cannot be indexed through this operation and remain authoritative.")
+    r.h("Evidence and remaining work")
+    r.p("The shareable record is docs/ai-local-validation-2026-11-07.md. Ignored local evidence under .rescuerelay/ai-setup includes model test results, search results and pinecone-e2e-result.json. The earlier metadata snapshot predates Pinecone and LangSmith resource creation. Remaining live checks include model-driven investigations, Mem0 operations, LlamaParse file parsing and LangSmith trace ingestion. ElevenLabs remains parked. These checks do not establish production readiness or a new aggregate CI pass.")
 
 
 def main():
