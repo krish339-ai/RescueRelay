@@ -11,7 +11,7 @@ def service_matrix_html():
     for item in data['services']:
         rows.append(f'<tr><td><a href="{e(item["source"],quote=True)}">{e(item["service"])}</a></td><td>{e(item["role"])}</td><td>{e(item["status"])}</td><td>{e(item["gate"])}</td></tr>')
     count=sum(bool(item['runtime_provider_id']) for item in data['services'])
-    summary=f'<p class="small"><strong>{len(data["services"])} services tracked:</strong> {count} selected runtime adapters and {len(data["services"])-count} alternatives, optional tools or deferred services. All live integrations remain unverified.</p>'
+    summary=f'<p class="small"><strong>{len(data["services"])} services tracked:</strong> {count} selected runtime adapters and {len(data["services"])-count} alternatives, optional tools or deferred services. {e(data["live_summary"])}</p><p><a href="{e(data["validation_report"], quote=True)}">Read the hosted live validation evidence and limits</a>.</p>'
     return summary+'<div class="table-wrap" role="region" aria-label="Scrollable service decision matrix" tabindex="0"><table><thead><tr><th>Service</th><th>Role in the product plan</th><th>Current decision and evidence</th><th>Acceptance gate</th></tr></thead><tbody>'+''.join(rows)+'</tbody></table></div>'
 
 def update_guide():

@@ -1,5 +1,7 @@
 # Independent QA review
 
+**Scope of this record:** the browser reviews below are historical. Later [hosted AI API validation](hosted-ai-validation-2026-11-07.md) verified eight integrations; it did not repeat browser visual QA.
+
 Review date: 30 October 2026. All records used in this review are synthetic. This is a development verification record, not a production security or food-safety certification.
 
 ## Automated independent coverage

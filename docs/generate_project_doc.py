@@ -229,7 +229,7 @@ def build():
     r.d.add_paragraph("A local first food rescue recovery coordinator", "Subtitle")
     r.p(f"Author Krishna Kallamadi  •  Reference release 0.1  •  {DATE}")
     r.p("RescueRelay demonstrates how a coordinator can recover a scheduled food rescue when its volunteer becomes unavailable. It combines a shared operational record, constrained replacement planning, understandable evidence and an explicit human approval step. The result is a runnable reference implementation for product evaluation, not a live dispatch service or a certification of safe food handling.")
-    r.p("This reference covers the local product, optional AI adapters, operating controls and enterprise evolution. Sections 21 to 24 add the 7 November local AI setup and validation: nine providers are configured, with precise test limits; ElevenLabs remains parked. It is written for product reviewers, developers and food rescue operations leaders. Historical release results and current local tests are identified separately.")
+    r.p("This reference covers the local product, optional AI adapters, operating controls and enterprise evolution. Sections 21 to 24 preserve the earlier local AI setup and tests. Section 25 records eight successful live integrations on the private hosted Site on 7 November 2026. OpenAI remains disabled on the Site; ElevenLabs remains parked. Local and hosted evidence are identified separately for reviewers and operators.")
     r.h("The central decision")
     r.p("Keep a human coordinator accountable for every replacement. The planner may collect evidence, reject infeasible candidates, rank feasible options and prepare a proposal. It must not invent availability, silently change a recipient, bypass policy checks or send real-world instructions without an authorized integration and approval.")
     r.table(["Boundary", "Meaning in this release"], [
@@ -237,7 +237,7 @@ def build():
         ("Synthetic demonstration", "Seeded identities, locations, rescues and travel estimates are fictional. The in-app outbox does not deliver SMS, email or push notifications."),
         ("Future product", "Real routing, notification delivery, enterprise identity, managed hosting and operational service commitments require additional implementation and validation."),
     ], [1.45, 5.55])
-    r.p("Reading path: sections 2–3 cover product evidence; 4–8 technical design; 9–11 setup and release checks; 12–14 operations, roadmap and sources; 15–19 AI workflows and historical service decisions; 20 the web redesign; 21–24 current AI configuration, setup steps and live-test evidence.")
+    r.p("Reading path: sections 2–3 cover product evidence; 4–8 technical design; 9–11 setup and release checks; 12–14 operations, roadmap and sources; 15–19 AI workflows and service evidence; 20 the web redesign; 21–24 earlier local AI setup and tests; 25 hosted live validation.")
 
     r.page(2, "Field evidence and product positioning")
     r.p("Food recovery already depends on coordinated relationships between donors, volunteer drivers and receiving organizations. The following published examples ground that model. They are historical descriptions, not evidence that those organizations use RescueRelay, endorse it or experienced the synthetic failure scenarios in this repository.")
@@ -488,7 +488,7 @@ def build():
         (19, "Optional development and future integrations", deferred[4:]),
     ]:
         r.page(number, title)
-        r.p("This matrix preserves the 30 October release checkpoint from docs/ai-service-decisions.json, when live services were off and unverified. Sections 21 to 24 record the later local setup and bounded live tests. A passed mock alone does not establish live access or vendor performance.")
+        r.p("This matrix records current evidence from docs/ai-service-decisions.json. Eight integrations passed live operations on the private hosted Site. OpenAI passed local direct inference but is disabled on the Site; ElevenLabs is parked. Sections 21 to 24 preserve the earlier local checkpoint; section 25 records hosted validation.")
         r.table(["Service", "Use case and boundary", "Implementation and verification"],
             [(item["service"], item["role"], item["status"]) for item in items], [1.25, 3.5, 2.25])
         r.h("Official service references")
@@ -503,7 +503,7 @@ def build():
                 "Approve the exact provider, permitted data, retention implications and bounded test cost. Use appropriate vendor-side budget controls; local byte limits do not enforce a monetary cap.",
                 "Use synthetic or approved redacted material first. Inspect receipts and vendor usage before repeating any uncertain operation. No live activation is required to use the local offline demo.",
             ])
-            r.p("Project delivery does not provision hosting, GPU instances, external accounts, notification delivery or app-store releases. These remain explicit later decisions, not hidden dependencies of the reference product.")
+            r.p("The separate private Site is deployed and its eight enabled integrations passed bounded live tests. These seven alternative tools remain deferred. Live notification delivery, GPU instances and app-store releases are not supplied by this reference build.")
     r.page(20, "Pipeline workspace and current release checks")
     r.p("The selected web design is Rescue Pipeline with Liquid/Organic animation. A full-width workspace and grouped top navigation replace the earlier internal layout. This is a presentation change over the existing API and role-scoped records, not a new dispatch engine. The separate Expo native screens are unchanged.")
     r.h("Read the actual rescue state")
@@ -517,13 +517,14 @@ def build():
     r.p("Initial local checks passed 130 tests, 9 native/API checkpoints, 12 offline evaluations with zero provider calls, typechecks and web build. Aggregate verify failed when Expo was killed with SIGKILL; an all-platform --max-workers 1 retry exited 0. After the terminal-label fix, fresh GitHub Actions run 41128268002 passed for revision 9057ea4: 131 tests (API 33, native 19, web 25, QA 54), 12 evaluations with zero provider calls and all platform exports. Both aggregate verification and Windows launcher jobs succeeded.")
     r.p("Actual-app desktop and approximately 500px narrow review passed, including role scopes, the volunteer Accept dialog, terminal receipt distinction, rapid navigation/refresh and local reduced-motion persistence. Windows pulled revision 9057ea4 and passed full verification: 130 passed, zero failed, one existing POSIX-only test skipped; 9 integration checkpoints, 12 evaluations, all exports and 24 launcher assertions passed. Direct/proxied health and served pipeline assets returned HTTP 200. Windows browser visuals were not exercised locally. These 30 October results describe their own revisions, when all live services were off and unverified. The later local provider results follow; no live dispatch, native-device certification or production readiness is claimed.")
     append_ai_setup(r)
+    append_hosted_validation(r)
     return r.d
 
 
 def append_ai_setup(r):
-    r.page(21, "Local AI configuration and validation")
-    r.p("On 7 November 2026, nine providers were configured and enabled in the private local settings. After restart, an authenticated demo coordinator checked the capability endpoint: all nine were configured, enabled and available with no missing settings. ElevenLabs remains parked. This local readiness check does not mean every provider workflow passed end to end.")
-    r.table(["Provider", "Observed live result", "Still untested"], [
+    r.page(21, "Earlier local AI configuration and validation")
+    r.p("This table preserves the earlier local checkpoint on 7 November 2026. Nine providers were configured and available to the demo coordinator; ElevenLabs was parked. The remaining tests below describe that local environment. Eight integrations subsequently passed live operations on the separate hosted Site, as recorded in section 25.")
+    r.table(["Provider", "Earlier local result", "Untested at that checkpoint"], [
         ("Fireworks AI", "Model lookup and correct arithmetic completion; 56 tokens total.", "In-app investigation and tool calling."),
         ("Nebius Token Factory", "Model catalog and correct arithmetic completion; 67 tokens total.", "In-app investigation and tool calling."),
         ("OpenAI", "Model lookup and correct Responses arithmetic result; 25 tokens total.", "In-app investigation."),
@@ -581,7 +582,7 @@ def append_ai_setup(r):
         "Step 3  Select the Local environment. Copy the ID beside Local and verify that destination using the saved key. Read its actual tracing project name and workspace ID; do not guess from the display name.",
         "Step 4  This session resolved LANGSMITH_PROJECT=rescuerelay-local. Save the verified scope in LANGSMITH_WORKSPACE_ID and set LANGSMITH_ENABLED=true, then restart. Different accounts may resolve different names or scopes.",
     ])
-    r.p("The destination lookup passed, but no trace was submitted. Waiting for traces is expected until a separately consented traced operation runs. Tracing retention settings do not identify the destination and did not need changing during this setup.")
+    r.p("This initial destination lookup did not submit a trace. Later hosted Fireworks and Nebius investigations successfully submitted separately consented redacted traces, as recorded in section 25. Tracing retention settings did not need changing during setup.")
 
     r.page(24, "Validate the demo and understand the live tests")
     r.h("Check the running demo")
@@ -598,7 +599,27 @@ def append_ai_setup(r):
     r.h("Populate a real demo reference later")
     r.p("Prepare an authorized reference draft through source discovery or document parsing, review its title, text and scope, and approve it as reference knowledge. Select that approved reference for a separate Pinecone indexing consent. After acceptance, perform a separately consented search and inspect the citation. Configured hard policies cannot be indexed through this operation and remain authoritative.")
     r.h("Evidence and remaining work")
-    r.p("The shareable record is docs/ai-local-validation-2026-11-07.md. Ignored local evidence under .rescuerelay/ai-setup includes model test results, search results and pinecone-e2e-result.json. The earlier metadata snapshot predates Pinecone and LangSmith resource creation. Remaining live checks include model-driven investigations, Mem0 operations, LlamaParse file parsing and LangSmith trace ingestion. ElevenLabs remains parked. These checks do not establish production readiness or a new aggregate CI pass.")
+    r.p("The earlier local record is docs/ai-local-validation-2026-11-07.md. Its outstanding model investigations, Mem0 operations, document parsing and trace ingestion later passed on the separate hosted Site. See section 25 and docs/hosted-ai-validation-2026-11-07.md for that evidence. OpenAI remains disabled on the Site and ElevenLabs is parked. Hosted fixes were not merged into the original local application by this documentation update.")
+
+
+def append_hosted_validation(r):
+    r.page(25, "Hosted AI integration validation")
+    r.p("On 7 November 2026, all eight enabled integrations passed live API operations on the private deployed Site. Tests used a separate synthetic organization and fresh consent for each operation. The shared demo was not reset, and model investigations did not apply assignments.")
+    r.table(["Provider", "Observed hosted result"], [
+        ("Fireworks AI", "Read-only investigation produced a ready recovery proposal; three model requests."),
+        ("Nebius Token Factory", "Read-only investigation produced a ready proposal after the response-parser repair; five model requests."),
+        ("LangSmith", "Creation and completion of redacted traces accepted for both investigations; two requests per trace."),
+        ("Tavily", "Approved-domain search returned two sources and a reviewable reference draft."),
+        ("Keenable", "Approved-domain search returned three sources and a reviewable reference draft."),
+        ("Mem0", "Saved, recalled and deleted one synthetic preference after checking ownership."),
+        ("LlamaParse", "Uploaded synthetic text and obtained completed Markdown in a reviewable draft."),
+        ("Pinecone", "Indexed one reviewed test reference and retrieved it on the first search without fallback."),
+    ], [1.6, 5.4])
+    r.h("Controls and cleanup")
+    r.p("Application login and role restrictions passed. Volunteer and recipient accounts were denied coordinator AI access; replaying an executed consent returned HTTP 403. Temporary test access and its secrets were removed, the cleanup was deployed, and the retired credential was rejected. All nine final hosted regression tests passed.")
+    r.h("Exclusions and retained artifacts")
+    r.p("OpenAI passed an earlier local direct test but remains disabled and untested on the Site. ElevenLabs remains parked. Browser visual QA, native devices, load testing and LangSmith dashboard display were not checked in this run. Labeled synthetic D1 records, a Pinecone reference, LlamaCloud artifacts and redacted traces remain; the Mem0 preference was deleted.")
+    r.p("Full evidence and hosting-only transport, timeout and parser repairs: docs/hosted-ai-validation-2026-11-07.md. AI Studio still uses a static liveTested=false label; it does not import manual validation evidence. No production-readiness or exact-spend claim is made.")
 
 
 def main():

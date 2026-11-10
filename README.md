@@ -119,7 +119,8 @@ Use the [AI API contract](docs/ai-api-contract.md) for current endpoints. The or
 
 - [Submission readiness](docs/submission-readiness.html) — required materials, verified evidence, remaining gaps and next steps.
 - [RescueRelay as a story](docs/rescuerelay-story.html) — a guided tour of users, features, the complete AI stack, examples and test coverage.
-- [Local AI configuration and validation — 7 November 2026](docs/ai-local-validation-2026-11-07.md) — current local setup, demo-account readiness, live checks and untested operations.
+- [Hosted AI validation — 7 November 2026](docs/hosted-ai-validation-2026-11-07.md) — eight enabled integrations passed live operations; OpenAI is disabled on the Site and ElevenLabs is parked.
+- [Local AI configuration and validation — 7 November 2026](docs/ai-local-validation-2026-11-07.md) — earlier local setup, demo-account readiness and environment-specific test coverage.
 - [Step-by-step HTML build guide](docs/build-guide.html) — open locally in your browser.
 - [Official project documentation](docs/RescueRelay-Project-Documentation.docx) — audience-ready Word document.
 - [Implementation plan](docs/implementation-plan.md) and [API contract](docs/api-contract.md).

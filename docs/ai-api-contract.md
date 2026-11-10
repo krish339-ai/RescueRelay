@@ -1,5 +1,7 @@
 # Optional AI workspace — phase 2 contract
 
+**Observed hosted validation:** eight integrations passed the bounded operations in the [hosted test report](hosted-ai-validation-2026-11-07.md). OpenAI is disabled on the Site and ElevenLabs is parked. The hosting copy has separate Worker transport and parser repairs; this local API contract and default settings do not automatically activate another installation.
+
 The verified offline product remains the default. No connector is activated by installing the code. No key is collected in chat or the client. All routes require coordinator authentication and derive organization from the current session. **Configured**, **enabled**, and **live-tested** are distinct. Adapter implementation and mocked verification are recorded in the verification report. Later local setup and bounded live checks are recorded in the [7 November 2026 validation report](ai-local-validation-2026-11-07.md); that report distinguishes demo-account readiness, direct provider checks and the isolated Pinecone app-route test. The current `liveTested=false` capability field does not incorporate those manual results.
 
 ## Read and setup

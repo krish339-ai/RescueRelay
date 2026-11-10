@@ -1,5 +1,7 @@
 # Local AI configuration and validation — 7 November 2026
 
+**Later hosted evidence:** [Eight hosted integrations passed live operations](hosted-ai-validation-2026-11-07.md) later on the same date. This document preserves the earlier local checkpoint; its remaining-test list is not the current hosted status. OpenAI remains disabled on the Site and ElevenLabs remains parked.
+
 This records operator-authorized checks on the Windows development checkout on 7 November 2026 (Eastern time). It supplements the historical mock-only release evidence; it is not a production certification or a claim that every AI workflow passed.
 
 ## Configuration and demo-account readiness
@@ -20,8 +22,8 @@ Credentials remain server-side and are not included in this report. Another chec
 | Pinecone | Authenticated index metadata, compatible ready index, and the isolated app-route indexing/retrieval test described below passed. | The running demo workspace has no approved references populated by this test. |
 | Tavily | Authenticated usage lookup and one basic public USDA search succeeded; one result, reported usage of one credit. | Direct search test; draft review/approval workflow not tested live. |
 | Keenable | One authenticated public USDA search succeeded and returned one result. | Direct search test; draft review/approval workflow not tested live. |
-| Mem0 | Authenticated ping succeeded and resolved a project. | Memory save, recall and delete operations remain untested live. |
-| LangSmith | Saved replacement key successfully read the newly created RescueRelay Local tracing destination. Correct tracing project configured as `rescuerelay-local`, with its verified workspace scope. | No trace was sent; trace ingestion and display remain untested live. |
+| Mem0 | Authenticated ping succeeded and resolved a project. | Memory save, recall and delete were not tested at this local checkpoint; later hosted operations passed. |
+| LangSmith | Saved replacement key successfully read the newly created RescueRelay Local tracing destination. Correct tracing project configured as `rescuerelay-local`, with its verified workspace scope. | No trace was sent at this local checkpoint; later hosted trace ingestion passed. Vendor dashboard display was not checked. |
 | LlamaParse | Authenticated parse-job listing succeeded; the versions endpoint confirmed `cost_effective` with `latest` is supported. | No document was uploaded or parsed. |
 | ElevenLabs | None; intentionally parked. | API key, transcription model and live transcription remain pending. |
 

@@ -121,12 +121,22 @@ def check():
             configured = set(re.findall(r"([a-z][a-z0-9]*)\s*:\s*\{\s*label\s*:", registry))
             if provider_ids != declared or provider_ids != configured:
                 errors.append(f'Matrix/code provider mismatch: matrix={sorted(provider_ids)} shared={sorted(declared)} registry={sorted(configured)}')
+        hosted_ids = {'fireworks', 'nebius', 'pinecone', 'tavily', 'keenable', 'mem0', 'langsmith', 'llamaparse'}
+        if decisions.get('live_verification_scope') != 'private_chatgpt_site':
+            errors.append('Service matrix must identify the hosted validation scope')
+        report_name = decisions.get('validation_report', '')
+        if not report_name or not (ROOT / report_name).is_file():
+            errors.append('Hosted validation evidence report is missing')
+        if {s['runtime_provider_id'] for s in services if s['live_verified']} != hosted_ids:
+            errors.append('Hosted live coverage differs from the eight recorded provider passes')
         for item in services:
-            if item['live_verified'] is not False:
-                errors.append(f'Unapproved live-verification claim: {item["service"]}')
+            pid = item['runtime_provider_id']
             if item['runtime_provider_id']:
-                if item['implementation_status'] != 'source_implemented' or item['activation_status'] != 'default_off_live_unverified' or item['verification_status'] not in {'mock_verification_in_progress', 'mock_verified'}:
+                expected_status = ('hosted_enabled', 'hosted_live_verified') if pid in hosted_ids else ('local_enabled_hosted_disabled', 'local_inference_verified_hosted_untested') if pid == 'openai' else ('parked_disabled', 'mock_verified')
+                if item['implementation_status'] != 'source_implemented' or (item['activation_status'], item['verification_status']) != expected_status:
                     errors.append(f'Runtime status mismatch: {item["service"]}')
+                if pid in hosted_ids and (item.get('validation_environment') != 'private_chatgpt_site' or item.get('validation_date') != '2026-11-07' or item.get('validation_report') != report_name or not item.get('validated_operation')):
+                    errors.append(f'Hosted pass lacks scoped, dated evidence: {item["service"]}')
             elif item['implementation_status'] != 'deferred' or item['verification_status'] != 'not_implemented' or item['activation_status'] != 'not_activated':
                 errors.append(f'Deferred status mismatch: {item["service"]}')
         from service_matrix import service_matrix_html

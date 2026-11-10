@@ -1,5 +1,11 @@
 # Local AI setup and bounded live validation — 7 November 2026
 
+## Later hosted validation — 7 November 2026
+
+Eight enabled integrations passed real operations on the private Site, including model investigations, trace ingestion, search, memory save/recall/delete, parsing and Pinecone indexing/retrieval. All nine final hosted regression tests passed. Temporary test access was removed and its retired credential returned HTTP 401. OpenAI remains disabled on the Site; ElevenLabs remains parked. See the [hosted validation report](hosted-ai-validation-2026-11-07.md). The local records and historical CI below describe their own environments and revisions.
+
+## Earlier local checkpoint
+
 **Subsequent public-commit CI:** commit `53a31d053c43d99e3a67ae51eb23788aa806751e` passed [GitHub Actions verification](https://github.com/krish339-ai/RescueRelay/actions/runs/42349533301). Both `verify` (including `npm run verify` and dependency audit) and `windows-launchers` completed successfully. This CI result is separate from the manually exercised live-provider coverage below and does not validate subsequent documentation changes.
 
 Nine providers were configured and enabled in the ignored local settings. After restart, authenticated demo-coordinator capability checks confirmed all nine available with no missing settings. ElevenLabs remains intentionally parked. Fireworks, Nebius and OpenAI passed direct live arithmetic requests; Tavily and Keenable passed direct public searches; Mem0 and LlamaParse passed authenticated metadata checks; LangSmith's newly created Local destination was verified but no trace was sent.
